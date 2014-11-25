@@ -1,0 +1,85 @@
+body{ margin:0;padding:0;color: #5e5e5e;}
+body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, label, dl, dt, dd, fieldset, img {
+    border: 0 none;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+*{margin:0;padding:0}
+ul{list-style: none;}
+.bg{background:#100a0c url("../image/sinablogb.jpg") no-repeat center top;}
+.box{width:950px;height:100%;margin:0 auto;}
+a{text-decoration:none;color:#5e5e5e;}
+/*导航条*/
+.head-top{height:30px;width:100%;background-color: #f1f1f1;}
+.top-content{width:950px;margin:0 auto;font-size: 15px;}
+.top-content .logo{float:left;width:100px;height:30px;background:url("../image/logo.gif") no-repeat;}
+.top-content .perinfo{width:200px;float:right;}
+.top-content .perinfo li{float:left;line-height: 30px;position:relative;text-align: center;padding:0 5px;}
+.top-content .perinfo li ul{position:absolute;background-color:#ddd;left:0; top:30;display:none;}
+.top-content .perinfo li ul li{float:none;line-height:30px;margin-left:0;min-width:90px;}
+.top-content .perinfo li ul li:hover{background-color:#f1f1f1; }
+.top-content .perinfo li:hover{background-color:#ddd;}
+.top-content .perinfo li:hover span{color: blue;}
+.top-content .perinfo li:hover ul{display: block;}
+
+.search{  
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #c3c3c3;
+    float: left;
+    height: 18px;
+    overflow: hidden;
+    position: relative;
+    width: 128px;
+    top:5px;
+}
+.search .input-text{
+	border-width: 0;
+    height: 16px;
+    line-height: 30px;
+    padding: 0 3px;
+    width: 100px;
+}
+.search .input-sub{    
+	background: url("../image/ntopbar.png") no-repeat scroll 0 0;
+    border: medium none;
+    cursor: pointer;
+    height: 12px;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: 3px;
+    right:5px;
+    width:12px;
+}
+/*页头*/
+.head{height:270px;position: relative;}
+.title-box *{color:#fff;}
+.title-box{position: absolute;top:90px;left:100px;width:350px;height:200px;}
+.user-line{background: url("../image/blognavbg.png") no-repeat;height: 10px;width: 100%;}
+.user-do *{color:#000;}
+.user-do{
+    position: absolute;
+    bottom:5px;
+    right:0px;
+    height: 30px;
+}
+.user-do-list{
+    float:left;
+    font-weight: bold;
+    margin-left:  7px;
+    line-height: 30px;
+    text-align: center;
+    padding:0 10px;
+    background: url("../image/ntopbar.png") repeat-x 0 -173px;
+}
+/*主体*/
+.main{min-height:800px;}
+/*左模块*/
+.left{width:210px;min-height:200px;background-color: #fff;float:left;margin:10px 0px;}
+.left-list{width:100%;min-height: 100px;border:1px solid red;margin:0 0 10px 0;}
+/*右模块*/
+.right{width:730px;height:1000px;background-color: #fff;float:left;margin:10px 0px 10px 10px;}
+
+/*页尾*/
+.foot{height:100px;border: 1px solid purple;clear:both;}
