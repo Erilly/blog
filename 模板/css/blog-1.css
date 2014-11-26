@@ -125,10 +125,11 @@ a{text-decoration:none;color:#5e5e5e;}
     bottom: 100px;
     background:url("../image/tips.png") no-repeat 0 -53px;
 }
-.right-content{width:96%;height:100%;margin:0 auto;border-bottom: 1px dashed #ddd;}
+.right-content{width:96%;height:100%;margin:0 auto;}
 .right-title-box{height:55px;}
 .right-title{float:left;margin:5px;}
 .right-title-box span{float:left;font-size:13px;margin: 10px;display: block;width:100px;}
+.right-article{border-bottom: 1px dashed #ddd;}
 .turn-it{
     float:right;
     width:65px;
@@ -145,6 +146,31 @@ a{text-decoration:none;color:#5e5e5e;}
     margin:5px;
 }
 .turn-it span{float:left;display: block;margin:0;font-size: 13px;width:30px;line-height: 30px}
+
+.right-article-bar{width:96%;height:25px; background-color:#eee;margin:50px auto 10px auto;line-height:25px;border-bottom: 1px solid #c3c3c3;}
+.article-discuss-left{font-weight:bold;margin-left:30px;float:left;}
+.article-discuss-right{margin-right:30px;float:right;cursor:pointer;}
+
+.discuss-content{padding:10px;width:95%;margin:0 auto;}
+.discuss-content ul li{border-bottom:1px dashed #ccc;padding:10px 0;}
+.discuss-content ul li *{margin: 10px 0;}
+.discuss-ctime{height:20px;}
+.discuss-ctime span{float: right;}
+.discuss-content p{font-size:13px;line-height: 15pt;text-indent: 2em;color: #909090;}
+.discuss-content a{color:#774ea7;font-weight: bold;font-size: 14px}
+
+.right-discuss-box{margin: 20px auto 0 auto;}
+.right-discuss-box ul{width: 90%;margin:0 auto;}
+.right-discuss-box ul li{line-height: 40px}
+.right-discuss-box ul li input{ 
+    padding: 0 3px;
+    width: 100px;
+    height:20px;
+}
+.discuss-area{width:100%;height:130px;overflow-y:scroll;resize: none;margin:0 auto;}
+.discuss-sub{width:70px;margin:5px auto 0 80%;}
+.discuss-sub .sub-it{width:70px;height:25px;}
+.img-vertify{height: 20px;position: relative;top:5px;}
 /*页尾*/
 .foot *{font-size: 13px;color:#fff;}
 .foot{clear:both;padding-top:50px;}
