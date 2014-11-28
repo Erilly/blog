@@ -7,8 +7,8 @@ body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, label, dl, dt, dd, fieldset, 
 }
 *{margin:0;padding:0}
 ul{list-style: none;}
-.bg{background:#100a0c url("../image/sinablogb.jpg") no-repeat center top;margin-top: 30px;}
-.box{width:950px;height:100%;margin:0 auto;}
+.bg{background:#100a0c url("../image/sinablogb.jpg") no-repeat center top;min-height:600px;width:100%;margin-top: 30px;}
+.box{width:950px;height:100%;margin:0 auto;border:1px solid red;}
 a{text-decoration:none;color:#5e5e5e;}
 p{line-height: 20pt}
 #back{margin-top:-30px;}
@@ -54,7 +54,18 @@ p{line-height: 20pt}
     right:5px;
     width:12px;
 }
+.back-top{
+    position:fixed;
+    width:44px;
+    height:43px;
+    display:block;
+    z-index: 99;
+    right:140px;
+    bottom: 100px;
+    background:url("../image/tips.png") no-repeat 0 -53px;
+}
 .back-top:hover {background:url("../image/tips.png") no-repeat -44px -53px}
+.bottom-height{height:15px;}
 /*页头*/
 .head{height:270px;position: relative;}
 .title-box *{color:#fff;}
@@ -84,7 +95,7 @@ p{line-height: 20pt}
 /*主体*/
 .main{min-height:800px;}
 /*左模块*/
-.bottom-height{height:15px;}
+
 .left *{font-size: 12px;}
 .left{width:210px;min-height:200px;float:left;margin:10px 0px;}
 .left-list{width:100%;min-height: 100px;margin:0 0 10px 0;background-color: #fff;}
@@ -117,16 +128,6 @@ p{line-height: 20pt}
 .left-per-search{width:180px;margin:0 auto;margin-top: 15px;}
 /*右模块*/
 .right{width:730px;min-height:300px;background-color: #fff;float:left;margin:10px 0px 10px 10px;}
-.back-top{
-    position:fixed;
-    width:44px;
-    height:43px;
-    display:block;
-    z-index: 99;
-    right:140px;
-    bottom: 100px;
-    background:url("../image/tips.png") no-repeat 0 -53px;
-}
 .right-content{width:96%;height:100%;margin:0 auto;}
 .right-title-box{height:55px;}
 .right-title{float:left;margin:5px;}
@@ -174,8 +175,8 @@ p{line-height: 20pt}
 .discuss-sub .sub-it{width:70px;height:25px;}
 .img-vertify{height: 20px;position: relative;top:5px;}
 
+/*登陆框和覆盖层*/
 .overburden{display:none;background-color: black; left: 0px; top: 0px; z-index: 100; position: fixed; width:100%; height: 100%; opacity: 0.4;}
-
 .login-window{
     display:none;
     position: fixed;
@@ -191,8 +192,6 @@ p{line-height: 20pt}
     bottom:0;
 }
 .login-box{margin:40px auto;width:70%;line-height:35px}
-.boxA{}
-.boxB{}
 .boxB input{float:right;width:60px;}
 .boxA a{font-size: 12px;}
 /*页尾*/
