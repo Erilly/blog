@@ -22,73 +22,43 @@ DROP TABLE IF EXISTS `article`;
 
 CREATE TABLE `article` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `uid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '作者id',
+  `cuid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '作者id',
+  `cid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '文章类id',
   `title` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '文章标题',
   `content` longtext COLLATE utf8_unicode_ci COMMENT '文章内容',
   `ctime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建日期',
   `status` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '文章状态',
+  `readnum` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '阅读次数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Table structure for table `commen` */
+/*Data for the table `article` */
 
-DROP TABLE IF EXISTS `commen`;
+insert  into `article`(`id`,`cuid`,`cid`,`title`,`content`,`ctime`,`status`,`readnum`) values (1,2,5,'不落的太阳','说的分手分手的放松放松放松对方水电费',333,1,333),(2,2,5,'天蓝蓝','士大夫撒发生法撒旦法师',222,1,222),(3,2,5,'青草香','阿萨德飞洒发撒旦法师',111,1,111);
 
-CREATE TABLE `commen` (
+/*Table structure for table `class` */
+
+DROP TABLE IF EXISTS `class`;
+
+CREATE TABLE `class` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `uid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
-  `commen` text COLLATE utf8_unicode_ci COMMENT '评论内容',
-  `good` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '被赞次数',
-  `ctime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '评论日期',
+  `class` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '类别名',
+  `ctime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '类别创建时间',
+  `status` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '状态：0为启用1启用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Table structure for table `commen_ship` */
+/*Data for the table `class` */
 
-DROP TABLE IF EXISTS `commen_ship`;
+insert  into `class`(`id`,`class`,`ctime`,`status`) values (1,'情感',11,0),(2,'科技',33,0),(3,'旅游',22,0),(4,'军事',55,0),(5,'文化',44,0);
 
-CREATE TABLE `commen_ship` (
-  `aid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '文章id',
-  `cid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '评论id'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*Table structure for table `user` */
 
-/*Table structure for table `discuss` */
+DROP TABLE IF EXISTS `user`;
 
-DROP TABLE IF EXISTS `discuss`;
-
-CREATE TABLE `discuss` (
+CREATE TABLE `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `uid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
-  `discuss` text COLLATE utf8_unicode_ci COMMENT '回复内容',
-  `ctime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '回复时间',
-  `good` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '被赞次数',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Table structure for table `discuss_ship` */
-
-DROP TABLE IF EXISTS `discuss_ship`;
-
-CREATE TABLE `discuss_ship` (
-  `cid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'comment的id',
-  `did` int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'discuss的id'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Table structure for table `follow_ship` */
-
-DROP TABLE IF EXISTS `follow_ship`;
-
-CREATE TABLE `follow_ship` (
-  `uid` int(11) DEFAULT '0' COMMENT '用户id',
-  `fid` int(11) DEFAULT '0' COMMENT '关注用户id'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Table structure for table `users` */
-
-DROP TABLE IF EXISTS `users`;
-
-CREATE TABLE `users` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'email地址',
   `kidname` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '笔名,账号',
   `password` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '密码',
   `user` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户名',
@@ -101,12 +71,28 @@ CREATE TABLE `users` (
   `ht_province` varchar(64) CHARACTER SET utf8 DEFAULT NULL COMMENT '家乡：省',
   `ht_city` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '家乡：市',
   `persign` varchar(125) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '个人签名',
-  `perdesc` varchar(256) COLLATE utf8_unicode_ci NOT NULL DEFAULT '暂未添加。' COMMENT '个人描述',
   `headpic` varchar(125) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '个人头像',
   `ctime` int(11) unsigned DEFAULT '0' COMMENT '创建时间',
   `status` smallint(2) unsigned NOT NULL DEFAULT '1' COMMENT '状态:1正常，0禁用',
+  `logip` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '登陆IP',
+  `lastlog` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '最后登陆时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `user` */
+
+insert  into `user`(`id`,`email`,`kidname`,`password`,`user`,`age`,`gender`,`job`,`birth`,`live_province`,`live_city`,`ht_province`,`ht_city`,`persign`,`headpic`,`ctime`,`status`,`logip`,`lastlog`) values (2,'1617507676@qq.com','jack','111','杨杰',20,1,'软件',0,NULL,NULL,NULL,NULL,NULL,NULL,0,1,NULL,0),(3,'1601676@qq.com','aaaa','111111','杨杰',0,1,'计算机/网络',0,'35','0',NULL,'0',NULL,NULL,1417286841,1,NULL,0),(4,'1601676@qq.com','aaaa','111111','杨杰',0,1,'计算机/网络',0,'35','0',NULL,'0',NULL,NULL,1417286859,1,NULL,0),(5,'12111@qq.com','aa','fba19a6a8f1962f8137e759694b5a904','杨杰',0,1,'计算机/网络',0,'23','11',NULL,NULL,NULL,NULL,1417287221,1,NULL,0),(6,'1211231@qq.com','aa','fba19a6a8f1962f8137e759694b5a904','杨杰',0,1,'计算机/网络',336844800,'19','12',NULL,NULL,NULL,NULL,1417287382,1,NULL,0);
+
+/*Table structure for table `user_article` */
+
+DROP TABLE IF EXISTS `user_article`;
+
+CREATE TABLE `user_article` (
+  `uid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
+  `aid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '文章id'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `user_article` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

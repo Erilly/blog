@@ -1,0 +1,11 @@
+<html>
+<{if !$smarty.session.uid}>
+<a href="__APP__/public/login">登录</a>
+<{else}>
+欢迎，[<a><{$smarty.session.name}></a>]
+<{/if}>
+<a href="__APP__/public/loginout">退出</a>
+<{foreach $name as $val}>
+	<{$val.name}><br/>
+<{/foreach}>
+</html>
