@@ -19,11 +19,17 @@ class PublicAction extends Action{
 			$this->error('验证码错误！');
 			exit();
 		}
+		//使用用户名登陆
+		$map['kidname']=$name;
+		$userinfo=M('User')->where($map)->find();//获取用户信息
+		//判断不是用户名的话用Email登陆
+		if(!$userinfo){
+			unset($map['kidname']);
+			$map['email']=$name;
+			$userinfo=M('User')->where($map)->find();//获取用户信息
+		}
 		
-		$map['name']=$name;
-		$userinfo=M('Users')->where($map)->find();//获取用户信息
-
-		if($userinfo['password']!=$pass){
+		if($userinfo['password']!=secret($pass)){
 			$this->error('密码错误!');
 			exit();
 		}
@@ -53,7 +59,7 @@ class PublicAction extends Action{
 			$this->success();
 		}
 	}
-	#查询email是否已被注册
+	#查询用户名是否已被注册
 	public function checkname(){
 		$map['kidname']=$_REQUEST['reg-kidname'];
 		$count=M('User')->where($map)->count();

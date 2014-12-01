@@ -9,10 +9,10 @@
 				</div>
 				<ul class="perinfo">
 					<li>欢迎,</li>
-					<{if $_SESSION['uid']==""}>
+					<{if !$_SESSION['uid']}>
 					<li>[<a class="global_log_btn"><span>登录</span></a>]</li>
 					<li><a href="__APP__/public/regist">注册</a></li>
-					<{else}>
+					<{else }>
 					<li>[<a href="#"><span>Ryan</span></a>]
 						<ul>
 							<li><a href="__APP__/public/loginout">退出</a></li>

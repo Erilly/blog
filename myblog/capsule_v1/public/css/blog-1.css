@@ -310,13 +310,28 @@ p{line-height: 20pt}
     top:0;
     bottom:0;
 }
-.login-box{margin:40px auto;width:70%;line-height:35px}
-.boxB input{float:right;width:60px;}
+.login-box{margin:20px auto;width:80%;line-height:35px;}
+.boxA{position: relative;}
 .boxA a{font-size: 12px;}
+.fm1,.fm2{height:20px;border: 1px solid #ccc;padding:0px 5px;}
+.fm2{width:150px;}
+.boxB {width:60px;margin:10px auto;}
+.boxB #button{ 
+    background:#56007c;
+    border:medium none;
+    cursor: pointer;
+    color:#fff;
+    overflow: hidden;
+    text-align: center;
+    top: 3px;
+    width:60px;
+    height:25px;
+    border-radius:4px;
+}
+.global_close{font-size: 20px;width:16px;height:16px;text-align: center;line-height: 16px;cursor: pointer;background: url("../images/quxiao.png");}
+.global_log_btn{cursor: pointer;}
 /*页尾*/
 .foot *{font-size: 13px;color:#fff;}
 .foot{clear:both;padding-top:50px;}
 .foot-content{width:320px;margin:0 auto;}
 .foot-content span{font-size:12px}
-.global_close{font-size: 20px;width:16px;height:16px;text-align: center;line-height: 16px;cursor: pointer;}
-.global_log_btn{cursor: pointer;}
