@@ -18,7 +18,7 @@ p{line-height: 20pt}
 .top-content .logo{float:left;width:100px;height:30px;background:url("../images/logo.gif") no-repeat;}
 .top-content .perinfo{width:200px;float:right;}
 .top-content .perinfo li{float:left;line-height: 30px;position:relative;text-align: center;padding:0 5px;}
-.top-content .perinfo li ul{position:absolute;background-color:#ddd;left:0; top:30;display:none;}
+.top-content .perinfo li ul{position:absolute;background-color:#ddd;left:0; top:30px;display:none;}
 .top-content .perinfo li ul li{float:none;line-height:30px;margin:0;min-width:90px;}
 .top-content .perinfo li ul li:hover{background-color:#f1f1f1; }
 .top-content .perinfo li:hover{background-color:#ddd;}

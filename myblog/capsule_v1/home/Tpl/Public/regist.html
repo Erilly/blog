@@ -6,7 +6,7 @@
 		<link type="text/css" rel="stylesheet" href="__PUBLIC__/formValidator/style/validator.css"></link>
 		<link href="__PUBLIC__/css/register.css" rel="stylesheet" type="text/css" />
 		<script src="__PUBLIC__/js/jquery-1.8.0.min.js" type="text/javascript"></script>
-  		<script src="__PUBLIC__/js/sitedata.js" type="text/javascript"></script>
+  		<script src="__PUBLIC__/js/city.js" type="text/javascript"></script>
 		<script src="__PUBLIC__/formValidator/jquery_last.js" type="text/javascript"></script>
 		<script src="__PUBLIC__/formValidator/formValidator.js" type="text/javascript" charset="UTF-8"></script>
 		<script src="__PUBLIC__/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
@@ -14,13 +14,10 @@
 
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$.each(GP,function(i){  $("#now-province").append("<option value='" + i + "'>" + GP[i] + "</option>");});
-			    $("#now-province").change( function () { var s = $("#now-province").val(); $("#now-city").get(0).selectedIndex = 0 ; if (s != 0){ $("#city").empty(); $.each( GT[s],function(i){ $("#now-city").append("<option value='" + i + "'>" + GT[s][i] + "</option>");});}}
-			    );
 
 			   	//表单验证
-				$.formValidator.initConfig({formid:"form1",onerror:function(msg){ return false;}});
-				$("#reg-email").formValidator({ onshow:"请输入邮箱",onfocus:"邮箱至少6个字符",oncorrect:"该Email可以注册"}).inputValidator({ min:6,max:50,onerror:"你输入的Email地址非法,请确认"}).regexValidator({ regexp:"email",datatype:"enum",onerror:"Email格式不正确"})
+				$.formValidator.initConfig({ formid:"form1",onerror:function(msg){ return false;}});
+				$("#reg-email").formValidator({ onshow:"请输入邮箱",onfocus:"邮箱至少6个字符",oncorrect:"该用户名可以注册"}).inputValidator({ min:6,max:50,onerror:"你输入的Email地址非法,请确认"}).regexValidator({ regexp:"email",datatype:"enum",onerror:"Email格式不正确"})
 				    .ajaxValidator({
 				    type : "get",
 					url : "__APP__/public/checkemail",
@@ -35,52 +32,55 @@
 			                return false;
 						}
 					},
+					error: function(){ alert("服务器没有返回数据，可能服务器忙，请重试");},
 					onerror : "该Email已被注册，请更换",
-					onwait : "正在对用户名进行合法性校验，请稍候..."
+					onwait : "正在对Email进行合法性校验，请稍候..."
 				});
 				$("#reg-password").formValidator({ onshow:"请输入密码",onfocus:"6-12位数字字母下划线",oncorrect:"密码合法"}).inputValidator({ min:6,max:12,empty:{ leftempty:false,rightempty:false,emptyerror:"密码两边不能有空符号"},onerror:"密码为6-12位,请确认"});
 				$("#reg-repassword").formValidator({ onshow:"请输入重复密码",onfocus:"两次密码必须一致哦",oncorrect:"密码一致"}).inputValidator({ min:1,empty:{ leftempty:false,rightempty:false,emptyerror:"重复密码两边不能有空符号"},onerror:"重复密码不能为空,请确认"}).compareValidator({ desid:"reg-password",operateor:"=",onerror:"2次密码不一致,请确认"});
 				$("#reg-name").formValidator({ onshow:"请输入您的姓名",onfocus:"名字2-8个汉字",oncorrect:"该用户名可以注册"}).inputValidator({ min:4,max:16,onerror:"你输入的姓名非法，请确认"}).regexValidator({ regexp:"chinese",datatype:"enum",onerror:"姓名只能是汉字"});
-				$("#reg-kidname").formValidator({ onshow:"请输入您的网名",onfocus:"1-10个数字字母或汉字",oncorrect:"该网名可以注册"}).inputValidator({ min:1,max:20,onerror:"你输入的网名非法，请确认"}).regexValidator({ regexp:"kidname",datatype:"enum",onerror:"请确认字数符合规则"});
+				$("#reg-kidname").formValidator({ onshow:"请输入您的用户名",onfocus:"1-10个数字字母或汉字",oncorrect:"该用户名可以注册"}).inputValidator({ min:1,max:20,onerror:"你输入的用户名非法，请确认"}).regexValidator({ regexp:"kidname",datatype:"enum",onerror:"请确认字数符合规则"})
+				    .ajaxValidator({
+				    type : "get",
+					url : "__APP__/public/checkname",
+					datatype : "json",
+					success : function(data){	
+			            if( data.status == "1" )
+						{
+			                return true;
+						}
+			            else
+						{
+			                return false;
+						}
+					},
+					error: function(){ alert("服务器没有返回数据，可能服务器忙，请重试");},
+					onerror : "该用户名已被注册，请更换",
+					onwait : "正在对用户名进行合法性校验，请稍候..."
+				});
 				$("#csny").focus(function(){ WdatePicker({ skin:'whyGreen',oncleared:function(){$(this).blur();},onpicked:function(){ $(this).blur();}})}).formValidator({ onshow:"请输入的出生日期",onfocus:"请输入的出生日期，不能全部是0哦",oncorrect:"你输入的日期合法"}).inputValidator({ min:"1900-01-01",max:"2015-01-01",type:"date",onerror:"日期必须在\"1900-01-01\"和\"2000-01-01\"之间"});
-				$("#reg-verify").formValidator({ onshow:"请输入验证码",onfocus:"5位数字验证码"}).inputValidator({ min:5,max:5,onerror:"验证码只能是数字",empty:{ leftempty:false,rightempty:false,emptyerror:"不能有空格"},onerror:"验证码是5位数字,请确认"}).regexValidator({ regexp:"num1",datatype:"enum",onerror:"请确认字数符合规则"});
+				$("#reg-verify").formValidator({ onshow:"请输入验证码",onfocus:"5位字母验证码"}).inputValidator({ min:5,max:5,onerror:"验证码只能是字母",empty:{ leftempty:false,rightempty:false,emptyerror:"不能有空格"},onerror:"验证码只能是5位字母,请确认"});
+
 				//更换验证码
 				$("#vimg").click(function(){
 					var d = new Date();
 					$(this).attr('src', "__APP__/public/verify/"+d.getTime());
 				});
-				
+				//城市选择
+				showprovince('live_province', 'live_city', '');
+                showcity('live_city', '', 'live_province');
+				showprovince('ht_province', 'ht_city', '');
+                showcity('ht_city', '', 'ht_province');
 			});
 	</script>
 	</head>
 	<body>
-
-		<div class="head-top">
-			<div class="top-content">
-				<div class='logo'></div>
-				<div class='search'>
-					<form action="" method="get">
-						<input type="text" class="input-text"/>
-						<input type="submit" value="" class="input-sub"/>
-					</form>
-				</div>
-				<ul class="perinfo">
-					<li>欢迎,</li>
-					<li>[<a href="#"><span>Ryan</span></a>]</li>
-					<li><a href="#">消息</a>
-						<ul>
-							<li><a href="#">查看评论</a></li>
-							<li><a href="#">查看留言</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
+		<{include file="Public/headbar.html"}>
 		<div id="back"></div>
 		<div class="bg">
 			<div class="box">
 				<div class="register-box">
-					<form action="__APP__/public/doregist" method="post" id="form1" name="form1">
+					<form action="" method="post" id="form1" name="form1">
 						<ul>
 							<li>
 								<label><i>*</i>邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
@@ -99,7 +99,7 @@
 							</li>
 							<li>
 								<label><i>*</i>姓&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
-								<div class="re-input"><input type="text" name="user" class="re-input-bor" id="reg-name"/></div>
+								<div class="re-input"><input type="text" name="name" class="re-input-bor" id="reg-name"/></div>
 								<span id="reg-nameTip"></span>
 							</li>
 							<li>
@@ -130,14 +130,14 @@
 							<li>
 								<label><i>*</i>生&nbsp;&nbsp;&nbsp;&nbsp;日：</label>
 								<div class="re-input ">
-									<input type="text" id="csny" class="re-input-bor" name="birth" style="width:120px" value="1980-01-01" />
+									<input type="text" id="csny" class="re-input-bor" style="width:120px" value="1980-01-01" />
 								</div>
 								<span id="csnyTip"></span>
 							</li>
 							<li>
 								<label><i></i>职&nbsp;&nbsp;&nbsp;&nbsp;业：</label>
 								<div class="re-input">
-									<select name="job">
+									<select name="merry">
 										<option value="保密">保密</option>
 										<option value="学生">学生</option>
 										<option value="政府机关/干部">政府机关/干部</option>
@@ -166,10 +166,10 @@
 							<li>
 								<label><i></i>现&nbsp;居&nbsp;地：</label>
 								<div class="re-input re-clear">
-									<select name="live_province" id="now-province">
+									<select name="live_province" id="live_province">
 										<!-- <option value="0">请选择省份</option> -->
 									</select> 
-									<select name="live_city" id="now-city">
+									<select name="live_city" id="live_city">
 										<option value="0">请选择城市</option>
 									</select> 
 								</div>
@@ -178,10 +178,10 @@
 							<li>
 								<label><i></i>家&nbsp;&nbsp;&nbsp;&nbsp;乡：</label>
 								<div class="re-input ">
-									<select name="ht_province" id="province">
+									<select name="ht_province" id="ht_province">
 									<!-- <option value="0">请选择省份</option> -->
 									</select> 
-									<select name="ht_city" id="city">
+									<select name="ht_city" id="ht_city">
 										<option value="0">请选择城市</option>
 									</select>  
 								</div>
@@ -189,7 +189,7 @@
 							</li>
 							<li>
 								<label><i>*</i>验&nbsp;证&nbsp;码：</label>
-								<div class="re-input re-verify"><input type="text" name="verify" class="re-input-bor re-verify-input" id="reg-verify"/><img src="__APP__/Public/verify/" class="re-vertify-img" id="vimg" /></div>
+								<div class="re-input re-verify"><input type="text" name="verify" class="re-input-bor re-verify-input" id="reg-verify"/><img src="__APP__/Public/verify/" class="re-vertify-img" id="vimg"/></div>
 								<span id="reg-verifyTip"></span>
 							</li>
 							<li>
@@ -198,37 +198,6 @@
 						</ul>
 					</form>
 				</div>
-
 				<script defer="defer" src="__PUBLIC__/formValidator/datepicker/WdatePicker.js" type="text/javascript"></script>
-				<a href="#back" class="back-top"></a>
-				<div class="overburden"></div>
-				<div class="login-window">
-					<div class="left-per-title">
-						<span class="per-title">登录JCapsule</span>
-					</div>
-					<div class="login-box">
-						<div class="boxA">
-							登录名：
-							<input id="login_name_d" class="fm1" type="text" name="login_name"  >
-							<a target="_blank" href="#">立即注册</a>
-						</div>
-						<div class="boxA">
-							密&nbsp; 码：
-							<input id="login_name_d" class="fm1" type="text" name="login_name" tabindex="201">
-							<a target="_blank" href="#">找回密码</a>
-						</div>
-						<div class="boxB">
-							<input type="submit" value="注册" name="button" id="button">
-						</div>
-					</div>
-				</div>
-				<div class="foot">
-					<ul class="foot-content">
-						<li>Copyright  ©2014 <span>jCapsule</span> 联系方式 QQ:1617507676</li>		
-					</ul>
-					<div class="bottom-height"></div>
-				</div>
-			</div>
-		</div>
-	</body>
-</html>
+		<!-- 导入页脚部分 -->
+		<{include file="Public/footer.html"}>

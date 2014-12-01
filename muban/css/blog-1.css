@@ -1,7 +1,7 @@
 body{ margin:0;padding:0;color: #5e5e5e;}
 body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, label, dl, dt, dd, fieldset, img {
     border: 0 none;
-    list-style: outside none none;
+    list-style:none;
     margin: 0;
     padding: 0;
 }
@@ -18,7 +18,7 @@ p{line-height: 20pt}
 .top-content .logo{float:left;width:100px;height:30px;background:url("../images/logo.gif") no-repeat;}
 .top-content .perinfo{width:200px;float:right;}
 .top-content .perinfo li{float:left;line-height: 30px;position:relative;text-align: center;padding:0 5px;}
-.top-content .perinfo li ul{position:absolute;background-color:#ddd;left:0; top:30;display:none;}
+.top-content .perinfo li ul{position:absolute;background-color:#ddd;left:0; top:30px;display:none;}
 .top-content .perinfo li ul li{float:none;line-height:30px;margin:0;min-width:90px;}
 .top-content .perinfo li ul li:hover{background-color:#f1f1f1; }
 .top-content .perinfo li:hover{background-color:#ddd;}
@@ -215,25 +215,84 @@ p{line-height: 20pt}
 }
 
 /*blog首页*/
-.index-head{width:100%;height:300px;background:#563d7c;}
-.index-bg{background:#ffffff;}
-.index-main{min-height:800px;border: 1px solid red}
+.index-head{width:100%;height:300px;background:#56007c ;}
+.index-bg{background:#fff url("../images/bar-logo.png");}
+.index-main{min-height:800px;border: 1px solid #ddd;background: #fff;border-radius: 6px;}
 .class-list-top{position:relative;width:100%;padding-top:20px;height:100px;}
 .class-list-box{position: absolute;width:100%;}
 .class-list-top li{float:left;margin-left: 30px}
 .class-list-block{
     text-align: center;
     font-size: 18px;
+    font-weight: bold;
     line-height: 50px;
-    background:#fff;
-    border:2px solid purple;
+    background:#56007c;
+    border:3px solid #fff;
     width: 50px;
     height:50px;
-    border-radius: 25px;
+    border-radius: 30px;
+    color:#fff;
 }
-.class-right-btn,.class-left-btn{background: #ccc;font-size: 45px;height:100px;text-align: center;line-height: 100px;cursor: pointer;opacity: 0.6; }
-.class-left-btn{float:left;}
-.class-right-btn{float:right;}
+.select-it{
+    text-align: center;
+    font-size: 27px;
+    font-weight: bold;
+    line-height: 80px;
+    background:#3399ff;
+    border:3px solid #fff;
+    width: 80px;
+    height:80px;
+    border-radius: 43px;
+}
+.index-article-list{
+    width:400px;
+    padding-left: 40px;
+    position: relative;
+    vertical-align: top;
+    border-bottom:2px solid #ddd;
+    float: left;
+    margin:10px 15px;
+}
+.index-article-list:hover{
+    border-bottom:2px solid orange;
+    background: #f9f9f9;
+}
+.class-list-block:hover{
+     background:#0eabb0;
+         border:3px solid orange;
+}
+.index-head-pic{
+    width: 50px;
+    height:50px;
+    border-radius: 43px;
+    border:1px solid #ddd;
+    left: 10px;
+    position: absolute;
+    top: 10px;
+
+}
+.index-author{
+    line-height: 20px;
+    padding-top: 18px;
+    padding-left: 40px;
+}
+.index-article-title{
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 6px;
+}
+.index-article-title a{
+    font-size: 20px;
+    color:#050505;
+}
+.index-article-time{
+    font-size: 13px;
+    padding:5px;
+    margin-left:80px;
+}
+.index-article-time span{
+    margin-left:10px;
+}
 /*登陆框和覆盖层*/
 .overburden{display:none;background-color: black; left: 0px; top: 0px; z-index: 100; position: fixed; width:100%; height: 100%; opacity: 0.4;}
 .login-window{

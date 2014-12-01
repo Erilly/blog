@@ -4,8 +4,8 @@ class IndexAction extends CommonAction {
     public function index(){
     	// $hot=D('Class')->getName();
     	// echo D()->getlastsql();
-    	$hot=D('Class')->relation('hot')->select();
-		$this->assign('hot',$hot);
+  //   	$hot=D('Class')->relation('hot')->select();
+		// $this->assign('hot',$hot);
 		$this->display();
 	}
 }

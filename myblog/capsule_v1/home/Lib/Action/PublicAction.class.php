@@ -53,6 +53,16 @@ class PublicAction extends Action{
 			$this->success();
 		}
 	}
+	#查询email是否已被注册
+	public function checkname(){
+		$map['kidname']=$_REQUEST['reg-kidname'];
+		$count=M('User')->where($map)->count();
+		if($count>0){
+			$this->error();
+		}else{
+			$this->success();
+		}
+	}
 	#注册新用户
 	public function doregist(){ 
 		//验证验证码

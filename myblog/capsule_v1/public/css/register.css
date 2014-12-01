@@ -13,12 +13,12 @@ a{text-decoration:none;color:#5e5e5e;}
 p{line-height: 20pt}
 #back{margin-top:-30px;}
 /*导航条*/
-.head-top{height:30px;width:100%;background-color: #f1f1f1;position: fixed;z-index: 99;top:0;}
+.head-top{height:30px;width:100%;background-color: #f1f1f1;position: fixed;z-index: 1000;top:0;}
 .top-content{width:950px;margin:0 auto;font-size: 15px;}
 .top-content .logo{float:left;width:100px;height:30px;background:url("../images/logo.gif") no-repeat;}
 .top-content .perinfo{width:200px;float:right;}
 .top-content .perinfo li{float:left;line-height: 30px;position:relative;text-align: center;padding:0 5px;}
-.top-content .perinfo li ul{position:absolute;background-color:#ddd;left:0; top:30;display:none;}
+.top-content .perinfo li ul{position:absolute;background-color:#ddd;left:0; top:30px;display:none;}
 .top-content .perinfo li ul li{float:none;line-height:30px;margin:0;min-width:90px;}
 .top-content .perinfo li ul li:hover{background-color:#f1f1f1; }
 .top-content .perinfo li:hover{background-color:#ddd;}
@@ -155,3 +155,8 @@ label i{
 .re-vertify-img{position: absolute;top:0;left:240px;height: 26px;}
 .re-submit{width:200px;margin:30px auto 0 auto;}
 .foot *{font-size: 13px;color:#555;}
+.left-per-title{height:15px;font-size: 12px;padding:5px;background-color:#f1f1f1; border-bottom: 1px solid #c3c3c3;}
+.left-per-title .per-title{float:left;font-size: 13px;font-weight:bold;color:#3e3e3e;}
+.left-per-title .edit{float:right;}
+.global_close{font-size: 20px;width:16px;height:16px;text-align: center;line-height: 16px;cursor: pointer;}
+.global_log_btn{cursor: pointer;}
