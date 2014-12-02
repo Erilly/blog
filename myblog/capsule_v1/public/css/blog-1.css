@@ -214,7 +214,10 @@ p{line-height: 20pt}
     padding:0 5px;
     margin:0 auto 20px auto;
 }
+.pagebox{ position: relative;bottom: 100px;height:25px;width:80%;padding:10px;margin:0 auto;bottom:120px}
+.pagebox .rows{font-size: 15px;width:30%;position: absolute;right:0px;top:20px;}
 
+.pagebox *{font-size: 15px}
 /*blog首页*/
 .index-head{width:100%;height:300px;background:#56007c;}
 .index-bg{background:#0eabb0;}
@@ -288,8 +291,8 @@ p{line-height: 20pt}
 }
 .index-article-time{
     font-size: 13px;
-    padding:5px;
-    margin-left:80px;
+    padding:5px 0;
+
 }
 .index-article-time span{
     margin-left:10px;

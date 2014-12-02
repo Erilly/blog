@@ -21,6 +21,11 @@ function mbsubstr($txt, $length){
 
 #获取用户头像
 function getheadpic($uid){
-	$pic=M('User')->field('headpic')->find($uid);
-	return $pic['headpic'];
+	$pic=M('User')->where('id='.$uid)->getField('headpic');
+	return $pic;
+}
+#获取用户名
+function getuname($uid){
+	$name=M('User')->where('id='.$uid)->getField('kidname');
+	return $name;
 }

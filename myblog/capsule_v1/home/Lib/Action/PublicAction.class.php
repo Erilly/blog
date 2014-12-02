@@ -36,11 +36,16 @@ class PublicAction extends Action
 			$this->error('密码错误!');
 			exit();
 		}
+		//记录用户登录ip和时间
+		$log['logip']=$_SERVER['REMOTE_ADDR'];
+		$log['lastlog']=date('Y-m-d H:i:s',time());
+
+		M('User')->where('id='.$userinfo['id'])->save($log);
 		//登录成功，记录session
 		session('name',$userinfo['kidname']);
 		session('uid',$userinfo['id']);
 
-		unset($userinfo,$map);
+		unset($userinfo,$map,$log);
 		$this->success('登陆成功！');
 		exit();
 	}

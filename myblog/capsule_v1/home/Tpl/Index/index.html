@@ -3,6 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>JC</title>
+		<link href="__PUBLIC__/css/page.css" rel="stylesheet" type="text/css" />
 		<link href="__PUBLIC__/css/blog-1.css" rel="stylesheet" type="text/css" />
 		<script src="__PUBLIC__/js/jquery-1.8.0.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
@@ -31,12 +32,7 @@
 						</div>
 						
 						<div class="user-line"></div>
-						<!-- <div class="user-block">
-							<span><a href="#">首页</a></span>
-							<span><a href="#">博文目录</a></span>
-							<span><a href="#">关注</a></span>
-							<span><a href="#">关于我</a></span>
-						</div> -->
+						
 					</div>
 					
 				</div>
@@ -49,7 +45,7 @@
 						<ul>
 							<{foreach from=$class item="v"}>
 							<li>
-								<a href="__URL__/index/cid/<{$v.id}>">
+								<a href="__URL__/index/cid/<{$v.id}>.html">
 									<div class="class-list-block 
 									<{if $v.id==$smarty.get.cid ||(!$smarty.get.cid && $v.id==1)}>select-it<{/if}>"><{$v.class}></div>
 								</a>
@@ -60,138 +56,25 @@
 				</div>
 				<div class="index-main">
 					<ul>
+						<{foreach from=$res item="v"}>
 						<li class="index-article-list">
-							<a href="#"><img src="./images/shuai.jpg" alt="" class="index-head-pic"></a>
+							<a href="#"><img src="<{$v.cuid|getheadpic}>" alt="" class="index-head-pic"></a>
 							<div class="index-author">
-								<a href="#">Ryan</a>
+								<a href="__APP__/article/person/uid/<{$v.cuid}>.html"><{$v.cuid|getuname}></a>
 								<div class="index-article-title">
-									<a href="#" class="article-title-style">中国文化的前前后后</a>
+									<a href="__APP__/article/content/id/<{$v.id}>.html" class="article-title-style"><{$v.title|mbsubstr:16}></a>
 									<div class="index-article-time">
-										<span>创作时间：2014-12-01</span>
-										<span>访问次数：(100)</span>
+										<span>创作时间：<{$v.ctime|date_format:"%Y-%m-%d"}></span>
+										<span>访问次数：(<{$v.readnum}>)</span>
 									</div>
 								</div>
 							</div>
 						</li>
-						<li class="index-article-list">
-							<a href="#"><img src="./images/shuai.jpg" alt="" class="index-head-pic"></a>
-							<div class="index-author">
-								<a href="#">Ryan</a>
-								<div class="index-article-title">
-									<a href="#" class="article-title-style">中国文化的前前后后</a>
-									<div class="index-article-time">
-										<span>创作时间：2014-12-01</span>
-										<span>访问次数：(100)</span>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="index-article-list">
-							<a href="#"><img src="./images/shuai.jpg" alt="" class="index-head-pic"></a>
-							<div class="index-author">
-								<a href="#">Ryan</a>
-								<div class="index-article-title">
-									<a href="#" class="article-title-style">中国文化的前前后后</a>
-									<div class="index-article-time">
-										<span>创作时间：2014-12-01</span>
-										<span>访问次数：(100)</span>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="index-article-list">
-							<a href="#"><img src="./images/shuai.jpg" alt="" class="index-head-pic"></a>
-							<div class="index-author">
-								<a href="#">Ryan</a>
-								<div class="index-article-title">
-									<a href="#" class="article-title-style">中国文化的前前后后</a>
-									<div class="index-article-time">
-										<span>创作时间：2014-12-01</span>
-										<span>访问次数：(100)</span>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="index-article-list">
-							<a href="#"><img src="./images/shuai.jpg" alt="" class="index-head-pic"></a>
-							<div class="index-author">
-								<a href="#">Ryan</a>
-								<div class="index-article-title">
-									<a href="#" class="article-title-style">中国文化的前前后后</a>
-									<div class="index-article-time">
-										<span>创作时间：2014-12-01</span>
-										<span>访问次数：(100)</span>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="index-article-list">
-							<a href="#"><img src="./images/shuai.jpg" alt="" class="index-head-pic"></a>
-							<div class="index-author">
-								<a href="#">Ryan</a>
-								<div class="index-article-title">
-									<a href="#" class="article-title-style">中国文化的前前后后</a>
-									<div class="index-article-time">
-										<span>创作时间：2014-12-01</span>
-										<span>访问次数：(100)</span>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="index-article-list">
-							<a href="#"><img src="./images/shuai.jpg" alt="" class="index-head-pic"></a>
-							<div class="index-author">
-								<a href="#">Ryan</a>
-								<div class="index-article-title">
-									<a href="#" class="article-title-style">中国文化的前前后后</a>
-									<div class="index-article-time">
-										<span>创作时间：2014-12-01</span>
-										<span>访问次数：(100)</span>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="index-article-list">
-							<a href="#"><img src="./images/shuai.jpg" alt="" class="index-head-pic"></a>
-							<div class="index-author">
-								<a href="#">Ryan</a>
-								<div class="index-article-title">
-									<a href="#" class="article-title-style">中国文化的前前后后</a>
-									<div class="index-article-time">
-										<span>创作时间：2014-12-01</span>
-										<span>访问次数：(100)</span>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="index-article-list">
-							<a href="#"><img src="./images/shuai.jpg" alt="" class="index-head-pic"></a>
-							<div class="index-author">
-								<a href="#">Ryan</a>
-								<div class="index-article-title">
-									<a href="#" class="article-title-style">中国文化的前前后后</a>
-									<div class="index-article-time">
-										<span>创作时间：2014-12-01</span>
-										<span>访问次数：(100)</span>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="index-article-list">
-							<a href="#"><img src="./images/shuai.jpg" alt="" class="index-head-pic"></a>
-							<div class="index-author">
-								<a href="#">Ryan</a>
-								<div class="index-article-title">
-									<a href="#" class="article-title-style">中国文化的前前后后</a>
-									<div class="index-article-time">
-										<span>创作时间：2014-12-01</span>
-										<span>访问次数：(100)</span>
-									</div>
-								</div>
-							</div>
-						</li>
+						<{/foreach}>
 					</ul>
-					<div><{$p}></div>
+
 				</div>
+				<div class="meneame pagebox"><{$page}></div>
+
 				<!-- 导入页脚 -->
 				<{include file="Public/footer.html"}>

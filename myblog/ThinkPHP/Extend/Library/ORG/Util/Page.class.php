@@ -12,7 +12,7 @@
 
 class Page {
     
-    // 分页栏每页显示的页数
+    // 分页栏每页显示的页数 [1] [2] ... [5] 页码数
     public $rollPage = 5;
     // 页数跳转时要带的参数
     public $parameter  ;
@@ -31,7 +31,7 @@ class Page {
     // 分页的栏的总页数
     protected $coolPages   ;
     // 分页显示定制
-    protected $config  =    array('header'=>'条记录','prev'=>'上一页','next'=>'下一页','first'=>'第一页','last'=>'最后一页','theme'=>' %totalRow% %header% %nowPage%/%totalPage% 页 %upPage% %downPage% %first%  %prePage%  %linkPage%  %nextPage% %end%');
+    protected $config  =    array('header'=>'条记录','prev'=>'上一页','next'=>'下一页','first'=>'首页','last'=>'末页','theme'=>' %totalRow% %header% %nowPage%/%totalPage% 页 %upPage% %downPage% %first%  %prePage%  %linkPage%  %nextPage% %end%');
     // 默认分页变量名
     protected $varPage;
 
@@ -116,7 +116,7 @@ class Page {
             $prePage    =   '';
         }else{
             $preRow     =   $this->nowPage-$this->rollPage;
-            $prePage    =   "<a href='".str_replace('__PAGE__',$preRow,$url)."' >上".$this->rollPage."页</a>";
+            $prePage    =   "<a href='".str_replace('__PAGE__',$preRow,$url)."' >&lt;&lt;</a>"; //上5页改成了 <<
             $theFirst   =   "<a href='".str_replace('__PAGE__',1,$url)."' >".$this->config['first']."</a>";
         }
         if($nowCoolPage == $this->coolPages){
@@ -125,7 +125,7 @@ class Page {
         }else{
             $nextRow    =   $this->nowPage+$this->rollPage;
             $theEndRow  =   $this->totalPages;
-            $nextPage   =   "<a href='".str_replace('__PAGE__',$nextRow,$url)."' >下".$this->rollPage."页</a>";
+            $nextPage   =   "<a href='".str_replace('__PAGE__',$nextRow,$url)."' >&gt;&gt;</a>";	// 下5页 改成了 >>
             $theEnd     =   "<a href='".str_replace('__PAGE__',$theEndRow,$url)."' >".$this->config['last']."</a>";
         }
         // 1 2 3 4 5
@@ -134,12 +134,13 @@ class Page {
             $page       =   ($nowCoolPage-1)*$this->rollPage+$i;
             if($page!=$this->nowPage){
                 if($page<=$this->totalPages){
-                    $linkPage .= "&nbsp;<a href='".str_replace('__PAGE__',$page,$url)."'>&nbsp;".$page."&nbsp;</a>";
+                    $linkPage .= "<a href='".str_replace('__PAGE__',$page,$url)."'>".$page."</a>"; //去掉了此处的空格
                 }else{
                     break;
                 }
             }else{
                 if($this->totalPages != 1){
+					// 当前页
                     $linkPage .= "&nbsp;<span class='current'>".$page."</span>";
                 }
             }
