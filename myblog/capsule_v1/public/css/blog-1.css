@@ -8,7 +8,7 @@ body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, label, dl, dt, dd, fieldset, 
 }
 *{margin:0;padding:0}
 ul{list-style: none;}
-.bg{background:#100a0c url("../images/sinablogb.jpg") no-repeat center top;min-height:600px;width:100%;margin-top: 30px;}
+.bg{background:#050004 url("../images/sinablogb.jpg") no-repeat center top;min-height:600px;width:100%;margin-top: 30px;}
 .box{width:950px;height:100%;margin:0 auto;}
 a{text-decoration:none;color:#5e5e5e;}
 p{line-height: 20pt}

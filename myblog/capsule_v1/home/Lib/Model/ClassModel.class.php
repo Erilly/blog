@@ -10,38 +10,23 @@ class ClassModel extends RelationModel{
 			'foreign_key'=>'cid',
 			'mapping_name'=>'hot',
 			'mapping_order'=>'readnum desc',
-			'mapping_limit'=>'10',
+			'condition'=>'status=1',
 		),
 	);
 	
-	//获取所有类别
+	#获取所有类别
 	public function getName(){
 		return $this->field('class')->select();
 	}
 
+	#获取相应类别及文章
+	public function getArticles($map){
+		// $this->join("Article on $map ")->where();
+	}
+}
+
 
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}

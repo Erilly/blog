@@ -18,3 +18,9 @@ function secret($data){
 function mbsubstr($txt, $length){
 	return (mb_strlen($txt, 'utf-8') <= $length) ? $txt : mb_substr($txt, 0, $length, 'utf-8').'…';
 }
+
+#获取用户头像
+function getheadpic($uid){
+	$pic=M('User')->field('headpic')->find($uid);
+	return $pic['headpic'];
+}

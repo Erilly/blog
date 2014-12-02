@@ -2,13 +2,16 @@
 /**
 *前台登陆注册退出
 */
-class PublicAction extends Action{
+class PublicAction extends Action
+{
 	#显示登录页面
-    public function login(){
+    public function login()
+    {
 		$this->display();
 	}
 	#用户登录验证
-	public function checklogin(){
+	public function checklogin()
+	{
 		//接收并处理登录表单数据
 		$name=input_filter($_REQUEST['username']); 
 		$pass=input_filter($_REQUEST['password']); 
@@ -33,24 +36,30 @@ class PublicAction extends Action{
 			$this->error('密码错误!');
 			exit();
 		}
-		session('name',$userinfo['name']);
+		//登录成功，记录session
+		session('name',$userinfo['kidname']);
 		session('uid',$userinfo['id']);
 
-		$this->success('登陆成功！','__APP__');
+		unset($userinfo,$map);
+		$this->success('登陆成功！');
+		exit();
 	}
 	#退出登录
-	public function loginout(){
+	public function loginout()
+	{
 		session(null);
-		$this->success('已退出登录！');
+		$this->success('已退出登录！','__APP__');
 	}
 
 	#显示注册页面
-    public function regist(){
+    public function regist()
+    {
 		$this->display();
 	}
 
 	#查询email是否已被注册
-	public function checkemail(){
+	public function checkemail()
+	{
 		$map['email']=$_REQUEST['reg-email'];
 		$count=M('User')->where($map)->count();
 		if($count>0){
@@ -60,17 +69,21 @@ class PublicAction extends Action{
 		}
 	}
 	#查询用户名是否已被注册
-	public function checkname(){
+	public function checkname()
+	{
 		$map['kidname']=$_REQUEST['reg-kidname'];
 		$count=M('User')->where($map)->count();
 		if($count>0){
 			$this->error();
+			exit();
 		}else{
 			$this->success();
+			exit();
 		}
 	}
 	#注册新用户
-	public function doregist(){ 
+	public function doregist()
+	{ 
 		//验证验证码
 		if(session('verify')!=md5($_POST['verify'])){
 			$this->error('验证码错误！');
@@ -84,14 +97,17 @@ class PublicAction extends Action{
 		//插入数据
 		$id=M('User')->data($_POST)->add();
 		if($id){
-			$this->success('注册成功！','Index/index');
+			$this->success('注册成功！','__APP__/index');
+			exit();
 		}else{
 			$this->error('注册失败！');
+			exit();
 		}
 
 	}
 	#创建验证码
-	public function verify(){
+	public function verify()
+	{
 		import('ORG.Util.Image');
 		Image::buildImageVerify(5,1,gif,60,26,'verify'); //数字验证码
 		//Image::GBVerify(4,'png',100,50,'msyh.ttf'); //中文验证码

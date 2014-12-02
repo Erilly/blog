@@ -5,6 +5,15 @@
 		<title>JC</title>
 		<link href="__PUBLIC__/css/blog-1.css" rel="stylesheet" type="text/css" />
 		<script src="__PUBLIC__/js/jquery-1.8.0.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function(){
+				//更换验证码
+				$(".vimg").click(function(){
+					var d = new Date();
+					$(this).attr('src', "__APP__/public/verify/"+d.getTime());
+				});
+			});	
+		</script>
 	</head>
 	<body>
 		<!-- 导入头顶条 -->
@@ -33,19 +42,19 @@
 				</div>
 
 		<div class="index-bg">
-			
+
 			<div class="box">
 				<div class="class-list-top">
 					<div class="class-list-box">
 						<ul>
-							<li><a href="#"><div class="class-list-block select-it">文化</div></a></li>
-							<li><a href="#"><div class="class-list-block">娱乐</div></a></li>
-							<li><a href="#"><div class="class-list-block">旅游</div></a></li>
-							<li><a href="#"><div class="class-list-block">教育</div></a></li>
-							<li><a href="#"><div class="class-list-block">经济</div></a></li>
-							<li><a href="#"><div class="class-list-block">科技</div></a></li>
-							<li><a href="#"><div class="class-list-block">军事</div></a></li>
-							<li><a href="#"><div class="class-list-block">其他</div></a></li>
+							<{foreach from=$class item="v"}>
+							<li>
+								<a href="__URL__/index/cid/<{$v.id}>">
+									<div class="class-list-block 
+									<{if $v.id==$smarty.get.cid ||(!$smarty.get.cid && $v.id==1)}>select-it<{/if}>"><{$v.class}></div>
+								</a>
+							</li>
+							<{/foreach}>
 						</ul>
 					</div>
 				</div>
@@ -182,6 +191,7 @@
 							</div>
 						</li>
 					</ul>
+					<div><{$p}></div>
 				</div>
 				<!-- 导入页脚 -->
 				<{include file="Public/footer.html"}>
