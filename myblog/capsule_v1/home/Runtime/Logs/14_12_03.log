@@ -1,0 +1,64 @@
+[ 2014-12-03T09:37:05+08:00 ] 127.0.0.1 /blog/myblog/capsule_v1/
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\wamp2\wamp\www\blog\myblog\ThinkPHP\Common\common.php 第 92 行.
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.020000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.030000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\wamp2\wamp\www\blog\myblog\ThinkPHP\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `class` [ RunTime:0.270001s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\wamp2\wamp\www\blog\myblog\ThinkPHP\Lib\Core\Db.class.php 第 568 行.
+SQL: SELECT * FROM `class`  [ RunTime:0.030000s ]
+SQL: SHOW COLUMNS FROM `article` [ RunTime:0.090000s ]
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Lib\Action\IndexAction.class.php 第 13 行.
+NOTIC: [2] Missing argument 1 for Model::limit(), called in D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Lib\Action\IndexAction.class.php on line 15 and defined D:\wamp2\wamp\www\blog\myblog\ThinkPHP\Lib\Core\Model.class.php 第 1483 行.
+NOTIC: [8] Undefined variable: offset D:\wamp2\wamp\www\blog\myblog\ThinkPHP\Lib\Core\Model.class.php 第 1484 行.
+NOTIC: [8] Undefined offset: 0 D:\wamp2\wamp\www\blog\myblog\ThinkPHP\Lib\Core\Model.class.php 第 234 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\wamp2\wamp\www\blog\myblog\ThinkPHP\Lib\Core\Db.class.php 第 568 行.
+SQL: SELECT * FROM `article` WHERE ( `status` = 1 ) AND ( `cid` = null )  [ RunTime:0.020000s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\wamp2\wamp\www\blog\myblog\ThinkPHP\Lib\Core\Db.class.php 第 568 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `article` WHERE ( `status` = 1 ) AND ( `cid` = null ) LIMIT 1   [ RunTime:0.050000s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.040000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.040000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: uid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\e5619175797836e4263bd5e62930fbe0a53baa0b.file.headbar.html.php 第 33 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+NOTIC: [8] Undefined index: cid D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Runtime\Cache\7af8e276c242d25ce8a56525ea9e3ba456b5af7c.file.index.html.php 第 87 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.740001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.740001s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.010000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.010000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.010000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.040000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.010000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.010000s ]
+
+[ 2014-12-03T09:37:06+08:00 ] 127.0.0.1 /blog/myblog/capsule_v1/index.php/Public/verify/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.010000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.010000s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\wamp2\wamp\www\blog\myblog\ThinkPHP\Lib\Core\Dispatcher.class.php 第 120 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\wamp2\wamp\www\blog\myblog\ThinkPHP\Common\common.php 第 92 行.
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.010000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+NOTIC: [8] Use of undefined constant gif - assumed 'gif' D:\wamp2\wamp\www\blog\myblog\capsule_v1\home\Lib\Action\PublicAction.class.php 第 112 行.
+
