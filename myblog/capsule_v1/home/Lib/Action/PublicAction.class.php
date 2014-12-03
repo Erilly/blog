@@ -4,11 +4,6 @@
 */
 class PublicAction extends Action
 {
-	#显示登录页面
-    public function login()
-    {
-		$this->display();
-	}
 	#用户登录验证
 	public function checklogin()
 	{
@@ -54,12 +49,6 @@ class PublicAction extends Action
 	{
 		session(null);
 		$this->success('已退出登录！','__APP__');
-	}
-
-	#显示注册页面
-    public function regist()
-    {
-		$this->display();
 	}
 
 	#查询email是否已被注册

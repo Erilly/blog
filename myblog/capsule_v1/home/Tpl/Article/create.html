@@ -1,0 +1,55 @@
+<{include file="Public/header.html"}>
+					
+		<div class="right">
+			<div class="left-per-title">
+				<span class="per-title"><{if $edit=='edit'}>修改文章<{else}>编写文章<{/if}></span>
+			</div>
+			<div class="right-content-box">
+				 <script src="__PUBLIC__/ueditor1_4_3/ueditor.parse.js"></script>
+				 <!-- 配置文件 -->
+			    <script type="text/javascript" src="__PUBLIC__/ueditor1_4_3/ueditor.config.js"></script>
+			    <!-- 编辑器源码文件 -->
+			    <script type="text/javascript" src="__PUBLIC__/ueditor1_4_3/ueditor.all.min.js"></script>
+				<div class="right-edit-content">
+				    <form action="__URL__/<{if $edit=='edit'}>update/id/<{$article.id}><{else}>docreate<{/if}>" method="post">
+				    	<select name="cid" id="class-selector">
+				    		<option value="<{$v.id}>">选择文章分类</option>
+				    		<{foreach from=$class item='v'}>
+				    		<option value="<{$v.id}>"<{if $article.cid==$v.id}>selected<{/if}>><{$v.class}></option>
+				    		<{/foreach}>
+				    	</select>
+				    	<div>
+					    	<input type="text" name="title" value="<{$article.title}>" placeholder="请输入文章标题" 
+								style="border:1px solid #9fc1d5;width:270px;height:35px;margin-bottom:10px;font-size:20px;padding:0px 10px;border-radius:5px;"
+					    	/>
+					    	<input type="radio" name="status" value="1" <{if $article.status==1}>checked<{/if}>/>开启
+					    	<input type="radio" name="status" value="0" <{if $article.status==0}>checked<{/if}>/>关闭
+					    </div>
+
+				        <!-- 加载编辑器的容器 -->
+				        <script id="container" name="content" type="text/plain" style="height:300px;">
+				        <{$article.content}>
+				        </script>
+				        <div class="edit-submit">
+							<input class="edit-sub-btn" type="submit" value="提 交">
+						</div>
+				    </form>
+				    <!-- 实例化编辑器 -->
+				    <script type="text/javascript">
+				        var ue = UE.getEditor('container',{ 
+				        	autoHeightEnabled: false,
+				        	autoFloatEnabled: true
+				        }).setHeight(300);
+						//uParse的语法
+						uParse('.phpcontent',{
+						    'highlightJsUrl':'__PUBLIC__/ueditor1_4_3/third-party/SyntaxHighlighter/shCore.js',
+						    'highlightCssUrl':'__PUBLIC__/ueditor1_4_3/third-party/SyntaxHighlighter/shCoreDefault.css'
+					    });
+
+				    </script>
+				</div>
+				<div class="bottom-height"></div>
+			</div>
+		</div>
+	</div>
+<{include file="Public/footer.html"}>

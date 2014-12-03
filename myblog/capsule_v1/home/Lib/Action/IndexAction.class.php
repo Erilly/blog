@@ -3,14 +3,11 @@
 class IndexAction extends CommonAction {
 
     public function index(){
-    	//获取文章分类
-    	$class=M('Class')->select();
-    	$this->assign('class',$class);
 
         //获取文章列表
         $m=M('Article');
         $map['status']=1;
-        $map['cid']=$_REQUEST['cid'];
+        $_REQUEST['cid']?$map['cid']=$_REQUEST['cid']:'';
 
         import('ORG.Util.Page');// 导入分页类
 

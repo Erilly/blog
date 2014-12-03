@@ -1,29 +1,31 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2014-12-02 14:43:08
+<?php /* Smarty version Smarty-3.1.6, created on 2014-12-03 17:29:42
          compiled from "D:/wamp2/wamp/www/blog/myblog/capsule_v1/home/Tpl\Public\header.html" */ ?>
-<?php /*%%SmartyHeaderCode:13128547d29e84c1c09-70449768%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:31702547ed806b62299-77475433%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'e383e45afe709c23ddf01ddbb87c1816284a39cc' => 
     array (
       0 => 'D:/wamp2/wamp/www/blog/myblog/capsule_v1/home/Tpl\\Public\\header.html',
-      1 => 1417502077,
+      1 => 1417597894,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '13128547d29e84c1c09-70449768',
+  'nocache_hash' => '31702547ed806b62299-77475433',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_547d29e86f830',
   'variables' => 
   array (
     'userinfo' => 0,
+    'class' => 0,
+    'v' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.6',
+  'unifunc' => 'content_547ed8070c37a',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_547d29e86f830')) {function content_547d29e86f830($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_547ed8070c37a')) {function content_547ed8070c37a($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -76,10 +78,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					</div>
 					<?php if ($_smarty_tpl->tpl_vars['userinfo']->value['id']==$_SESSION['uid']){?>
 					<div class="user-do">
-						<div class="user-do-list"><a href="__URL__/creat">编写文章</a></div>
-						<div class="user-do-list"><a href="__URL__/person/uid/<?php echo $_smarty_tpl->tpl_vars['userinfo']->value['id'];?>
+						<div class="user-do-list"><a href="__URL__/create/uid/<?php echo $_SESSION['uid'];?>
+.html">编写文章</a></div>
+						<div class="user-do-list"><a href="__URL__/person/uid/<?php echo $_SESSION['uid'];?>
 .html">个人中心</a></div>
-						<div class="user-do-list"><a href="__URL__/setinfo/uid/<?php echo $_smarty_tpl->tpl_vars['userinfo']->value['id'];?>
+						<div class="user-do-list"><a href="__URL__/setting/uid/<?php echo $_SESSION['uid'];?>
 .html">基本设置</a></div>
 					</div>
 					<?php }?>
@@ -100,11 +103,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 " width="180" height="180" alt="个人头像" /></a>
 							</div>
 							<div class="left-per-name">
-								<span>Ryan</span>
+								<span><?php echo $_smarty_tpl->tpl_vars['userinfo']->value['kidname'];?>
+</span>
 							</div>
 							<div class="left-per-focus">
+								<?php if ($_SESSION['uid']){?>
 								<div class="btn-style per-btn1">关注</div>
-								<?php if ($_smarty_tpl->tpl_vars['userinfo']->value['id']!=$_SESSION['uid']){?>
 								<div class="btn-style per-btn2">留言</div>
 								<?php }?>
 							</div>
@@ -112,23 +116,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<ul>
 									<li class="info-style">
 										<span>性别：</span>
-										<span>男</span>
+										<span><?php echo getGender($_smarty_tpl->tpl_vars['userinfo']->value['gender']);?>
+</span>
 									</li>
 									<li class="info-style">
 										<span>年龄：</span>
-										<span>25岁</span>
+										<span><?php echo getAge($_smarty_tpl->tpl_vars['userinfo']->value['birth']);?>
+岁</span>
 									</li>
 									<li class="info-style">
 										<span>星座：</span>
-										<span>双鱼座</span>
+										<span style="position:relative"><?php echo getStar($_smarty_tpl->tpl_vars['userinfo']->value['birth']);?>
+</span>
 									</li>
 									<li class="info-style">
 										<span>职业：</span>
-										<span>PHPer</span>
+										<span><?php echo $_smarty_tpl->tpl_vars['userinfo']->value['job'];?>
+</span>
 									</li>
 									<li class="info-style">
 										<span>网龄：</span>
-										<span>2年</span>
+										<span><?php echo getNetAge($_smarty_tpl->tpl_vars['userinfo']->value['ctime']);?>
+年</span>
 									</li>
 								</ul>
 							</div>
@@ -143,10 +152,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							</div>
 							<div class="left-class-list">
 								<ul>
-									<li class="info-style"><a href="#">情感 (21)</a></li>
-									<li class="info-style"><a href="#">科技 (123)</a></li>
-									<li class="info-style"><a href="#">杂项 (1983)</a></li>
-
+									<?php  $_smarty_tpl->tpl_vars['v'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['v']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['class']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['v']->key => $_smarty_tpl->tpl_vars['v']->value){
+$_smarty_tpl->tpl_vars['v']->_loop = true;
+?>
+									<li class="info-style">
+										<a href="__URL__/articlelist/uid/<?php echo $_smarty_tpl->tpl_vars['userinfo']->value['id'];?>
+/cid/<?php echo $_smarty_tpl->tpl_vars['v']->value['id'];?>
+.html"><?php echo $_smarty_tpl->tpl_vars['v']->value['class'];?>
+ (<?php echo getClassCount($_smarty_tpl->tpl_vars['v']->value['id'],$_smarty_tpl->tpl_vars['userinfo']->value['id']);?>
+)</a>
+									</li>
+									<?php } ?>
 								</ul>
 							</div>
 							<div class="bottom-height"></div>
@@ -185,7 +203,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							</div>
 							<div class="left-per-search">
 								<div class="search" method="get">
-									<form action="__URL__/list/uid/<?php echo $_smarty_tpl->tpl_vars['userinfo']->value['id'];?>
+									<form action="__URL__/articlelist/uid/<?php echo $_smarty_tpl->tpl_vars['userinfo']->value['id'];?>
 .html">
 										<input type="text" name="kwords" class="input-text"/>
 										<input type="submit" value="" class="input-sub"/>

@@ -42,9 +42,9 @@
 					</div>
 					<{if $userinfo.id==$smarty.session.uid}>
 					<div class="user-do">
-						<div class="user-do-list"><a href="__URL__/creat">编写文章</a></div>
-						<div class="user-do-list"><a href="__URL__/person/uid/<{$userinfo.id}>.html">个人中心</a></div>
-						<div class="user-do-list"><a href="__URL__/setinfo/uid/<{$userinfo.id}>.html">基本设置</a></div>
+						<div class="user-do-list"><a href="__URL__/create/uid/<{$smarty.session.uid}>.html">编写文章</a></div>
+						<div class="user-do-list"><a href="__URL__/person/uid/<{$smarty.session.uid}>.html">个人中心</a></div>
+						<div class="user-do-list"><a href="__URL__/setting/uid/<{$smarty.session.uid}>.html">基本设置</a></div>
 					</div>
 					<{/if}>
 				</div>
@@ -62,11 +62,11 @@
 								<a href="#"><img src="<{$userinfo.id|getheadpic}>" width="180" height="180" alt="个人头像" /></a>
 							</div>
 							<div class="left-per-name">
-								<span>Ryan</span>
+								<span><{$userinfo.kidname}></span>
 							</div>
 							<div class="left-per-focus">
+								<{if $smarty.session.uid}>
 								<div class="btn-style per-btn1">关注</div>
-								<{if $userinfo.id!=$smarty.session.uid}>
 								<div class="btn-style per-btn2">留言</div>
 								<{/if}>
 							</div>
@@ -74,23 +74,23 @@
 								<ul>
 									<li class="info-style">
 										<span>性别：</span>
-										<span>男</span>
+										<span><{$userinfo.gender|getGender}></span>
 									</li>
 									<li class="info-style">
 										<span>年龄：</span>
-										<span>25岁</span>
+										<span><{$userinfo.birth|getAge}>岁</span>
 									</li>
 									<li class="info-style">
 										<span>星座：</span>
-										<span>双鱼座</span>
+										<span style="position:relative"><{$userinfo.birth|getStar}></span>
 									</li>
 									<li class="info-style">
 										<span>职业：</span>
-										<span>PHPer</span>
+										<span><{$userinfo.job}></span>
 									</li>
 									<li class="info-style">
 										<span>网龄：</span>
-										<span>2年</span>
+										<span><{$userinfo.ctime|getNetAge}>年</span>
 									</li>
 								</ul>
 							</div>
@@ -105,10 +105,11 @@
 							</div>
 							<div class="left-class-list">
 								<ul>
-									<li class="info-style"><a href="#">情感 (21)</a></li>
-									<li class="info-style"><a href="#">科技 (123)</a></li>
-									<li class="info-style"><a href="#">杂项 (1983)</a></li>
-
+									<{foreach from=$class item='v'}>
+									<li class="info-style">
+										<a href="__URL__/articlelist/uid/<{$userinfo.id}>/cid/<{$v.id}>.html"><{$v.class}> (<{$v.id|getClassCount:$userinfo.id}>)</a>
+									</li>
+									<{/foreach}>
 								</ul>
 							</div>
 							<div class="bottom-height"></div>
@@ -147,7 +148,7 @@
 							</div>
 							<div class="left-per-search">
 								<div class="search" method="get">
-									<form action="__URL__/list/uid/<{$userinfo.id}>.html">
+									<form action="__URL__/articlelist/uid/<{$userinfo.id}>.html">
 										<input type="text" name="kwords" class="input-text"/>
 										<input type="submit" value="" class="input-sub"/>
 									</form>

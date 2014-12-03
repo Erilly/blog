@@ -1,0 +1,73 @@
+<{include file="Public/header.html"}>
+		<div class="right">
+			<div class="left-per-title">
+				<span class="per-title">文章正文</span>
+			</div>
+			<div class="right-content-box">
+				<div class="right-content">
+					<div class="right-title-box">
+						<h3 class="right-title"><{$article.title}></h3>
+						<span><{$article.ctime|date_format:'%Y-%m-%d'}></span>
+						<{if $smarty.session.uid}>
+						<div class="turn-it">
+							<em></em>
+							<span>转发</span>
+						</div>
+						<{/if}>
+					</div>
+					<div class="right-article">
+						<{$article.content}>
+						<div class="bottom-height"></div>
+					</div>
+
+					<div class="right-article-bar">
+						<span class="article-discuss-left">评论(2)</span>
+						<span class="article-discuss-right">[发评论]</span>
+					</div>
+					<div class="discuss-content">
+						<ul>
+							<li>
+								<a href="#">圣斗士星矢</a>
+								<p>本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好。</p>
+								<div class="discuss-ctime">
+									<span>2014-11-26 22:30</span>
+								</div>
+							</li>
+							<li>
+								<a href="#">圣斗士星矢</a>
+								<p>本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好，本文章很好。</p>
+								<div class="discuss-ctime">
+									<span>2014-11-26 22:30</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="right-article-bar">
+						<span class="article-discuss-left">发表评论</span>
+					</div>
+					<div class="right-discuss-box">
+						<form action="" method="post">
+							<ul>
+								<li><textarea class="discuss-area"></textarea></li>
+								<li>
+									<label>用户名：</label><input type="text"class="discuss-input-text">
+									<label>密码：</label><input type="password"class="discuss-input-pass">
+								</li>
+								<li>
+									<div class="discuss-vertify">
+										<label>验证码：</label><input type="text"class="discuss-input-text"> 
+										<img src="./images/vertify.png" class="img-vertify">
+									</div>
+									<div class="discuss-sub"><input type="submit" value="评论" class="sub-it"/></div>
+								</li>
+							</ul>
+							
+						</form>
+					</div>
+				</div>
+				<div class="bottom-height"></div>
+			</div>
+		</div>
+	</div>
+
+<{include file="Public/footer.html"}>
