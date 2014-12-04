@@ -1,4 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.6, created on 2014-12-04 22:51:24
+         compiled from "D:/wamp/www/blog/myblog/capsule_v1/home/Tpl\Public\regist.html" */ ?>
+<?php /*%%SmartyHeaderCode:1911254806e10eab271-68421294%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'a3f58ebb97c5c6c8d6a2c761e0ebdff77ffbba0e' => 
+    array (
+      0 => 'D:/wamp/www/blog/myblog/capsule_v1/home/Tpl\\Public\\regist.html',
+      1 => 1417704683,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '1911254806e10eab271-68421294',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.6',
+  'unifunc' => 'content_54806e1192d0c',
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_54806e1192d0c')) {function content_54806e1192d0c($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -75,7 +96,8 @@
 	</script>
 	</head>
 	<body>
-		<{include file="Public/headbar.html"}>
+		<?php echo $_smarty_tpl->getSubTemplate ("Public/headbar.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 		<div id="back"></div>
 		<div class="bg">
 			<div class="box">
@@ -200,4 +222,5 @@
 				</div>
 				<script defer="defer" src="__PUBLIC__/formValidator/datepicker/WdatePicker.js" type="text/javascript"></script>
 		<!-- 导入页脚部分 -->
-		<{include file="Public/footer.html"}>
+		<?php echo $_smarty_tpl->getSubTemplate ("Public/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>

@@ -1,4 +1,25 @@
-				<script src="__PUBLIC__/js/per_config.js" type="text/javascript"></script>
+<?php /* Smarty version Smarty-3.1.6, created on 2014-12-04 23:10:01
+         compiled from "D:/wamp/www/blog/myblog/capsule_v1/home/Tpl\Public\footer.html" */ ?>
+<?php /*%%SmartyHeaderCode:10967548042a8aaaae6-86806337%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '67b6e040a90acbcbfc617eef05bfcebe098ea0ab' => 
+    array (
+      0 => 'D:/wamp/www/blog/myblog/capsule_v1/home/Tpl\\Public\\footer.html',
+      1 => 1417705725,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '10967548042a8aaaae6-86806337',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.6',
+  'unifunc' => 'content_548042a8b6e01',
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_548042a8b6e01')) {function content_548042a8b6e01($_smarty_tpl) {?>				<script src="__PUBLIC__/js/per_config.js" type="text/javascript"></script>
 				<a href="#back" class="back-top"></a>
 				<div class="overburden"></div>
 				<div class="login-window">
@@ -39,4 +60,4 @@
 			</div>
 		</div>
 	</body>
-</html>
+</html><?php }} ?>
