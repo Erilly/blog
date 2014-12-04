@@ -1,34 +1,39 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2014-12-03 17:55:16
+<?php /* Smarty version Smarty-3.1.6, created on 2014-12-04 17:34:32
          compiled from "D:/wamp2/wamp/www/blog/myblog/capsule_v1/home/Tpl\Article\content.html" */ ?>
-<?php /*%%SmartyHeaderCode:2110547ede04510893-71855236%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3218254802aa8262959-02467886%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '2141f588ac1db015f1984bd7c4d8601ecd300e0e' => 
     array (
       0 => 'D:/wamp2/wamp/www/blog/myblog/capsule_v1/home/Tpl\\Article\\content.html',
-      1 => 1417592665,
+      1 => 1417661234,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2110547ede04510893-71855236',
+  'nocache_hash' => '3218254802aa8262959-02467886',
   'function' => 
   array (
   ),
   'variables' => 
   array (
+    'userinfo' => 0,
     'article' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_547ede0468f5f',
+  'unifunc' => 'content_54802aa8400ac',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_547ede0468f5f')) {function content_547ede0468f5f($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include 'D:\\wamp2\\wamp\\www\\blog\\myblog\\ThinkPHP\\Extend\\Vendor\\Smarty\\plugins\\modifier.date_format.php';
+<?php if ($_valid && !is_callable('content_54802aa8400ac')) {function content_54802aa8400ac($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include 'D:\\wamp2\\wamp\\www\\blog\\myblog\\ThinkPHP\\Extend\\Vendor\\Smarty\\plugins\\modifier.date_format.php';
 ?><?php echo $_smarty_tpl->getSubTemplate ("Public/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 		<div class="right">
 			<div class="left-per-title">
-				<span class="per-title">文章正文</span>
+				<span class="per-title"><a href="__URL__/articlelist/uid/<?php echo $_smarty_tpl->tpl_vars['userinfo']->value['id'];?>
+/cid/<?php echo $_smarty_tpl->tpl_vars['article']->value['cid'];?>
+.html"><?php echo getClassName($_smarty_tpl->tpl_vars['article']->value['cid']);?>
+</a> > <?php echo $_smarty_tpl->tpl_vars['article']->value['title'];?>
+</span>
 			</div>
 			<div class="right-content-box">
 				<div class="right-content">
@@ -37,12 +42,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </h3>
 						<span><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['article']->value['ctime'],'%Y-%m-%d');?>
 </span>
-						<?php if ($_SESSION['uid']){?>
-						<div class="turn-it">
-							<em></em>
-							<span>转发</span>
-						</div>
-						<?php }?>
 					</div>
 					<div class="right-article">
 						<?php echo $_smarty_tpl->tpl_vars['article']->value['content'];?>

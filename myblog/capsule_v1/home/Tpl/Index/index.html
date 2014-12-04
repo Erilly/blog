@@ -21,20 +21,16 @@
 		<{include file="Public/headbar.html"}>
 		<div id="back"></div>
 		<div class="index-head">
-					<div class="title-box">
+					<div class="index-title-box">
 						<div class="user-info">
-							<!-- <h1><a href="#"><span>Ryan的太空舱</span></a></h1> -->
-							<div><a>http://www.jcapsule.com/1</a></div>
+							<div class="index-logo"></div>
+							<div class="user-line"></div>
 							<div class="user-say"><span class="say-title"></span>
 								<span class="say-content">你从哪里来我的朋友，好像一只蝴蝶飞进我的窗口，好像一只蝴蝶飞进我的窗口，好像一只蝴蝶飞进我的窗口
 								</span>
 							</div>
-						</div>
-						
-						<div class="user-line"></div>
-						
-					</div>
-					
+						</div>	
+					</div>					
 				</div>
 
 		<div class="index-bg">
@@ -43,11 +39,18 @@
 				<div class="class-list-top">
 					<div class="class-list-box">
 						<ul>
+							<{if $smarty.request.kwords}>
+							<li>
+								<div class="class-list-block select-it">搜索</div>
+							</li>
+							<{/if}>
 							<{foreach from=$class item="v"}>
 							<li>
 								<a href="__URL__/index/cid/<{$v.id}>.html">
 									<div class="class-list-block 
-									<{if $v.id==$smarty.get.cid ||(!$smarty.get.cid && $v.id==1)}>select-it<{/if}>"><{$v.class}></div>
+										<{if ($v.id==$smarty.get.cid ||(!$smarty.get.cid && $v.id==1))&& !$smarty.request.kwords}>select-it<{/if}>">
+										<{$v.class}>
+									</div>
 								</a>
 							</li>
 							<{/foreach}>
@@ -55,7 +58,8 @@
 					</div>
 				</div>
 				<div class="index-main">
-					<ul>
+					<{if $res }>
+					<ul class="index-list-box">
 						<{foreach from=$res item="v"}>
 						<li class="index-article-list">
 							<a href="__APP__/article/person/uid/<{$v.cuid}>.html">
@@ -74,9 +78,12 @@
 						</li>
 						<{/foreach}>
 					</ul>
-
+					<div class="meneame pagebox"><{$page}></div>
+					<{else}>
+					<h1 style="margin:100px auto;width:100%;text-align:center">对不起该类下还没有文章！</h1>
+					<{/if}>
 				</div>
-				<div class="meneame pagebox"><{$page}></div>
+				
 
 				<!-- 导入页脚 -->
 				<{include file="Public/footer.html"}>

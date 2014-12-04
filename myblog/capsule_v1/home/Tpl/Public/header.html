@@ -4,6 +4,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>JC</title>
 		<link href="__PUBLIC__/css/blog-1.css" rel="stylesheet" type="text/css" />
+				<link href="__PUBLIC__/css/page.css" rel="stylesheet" type="text/css" />
+
 		<script src="__PUBLIC__/js/jquery-1.8.0.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			$(function(){
@@ -17,21 +19,46 @@
 	</head>
 	<body>
 		<{include file="Public/headbar.html"}>
-		<div id="back"></div>
-		<div class="bg">
+		<div id="back" ></div>
+		<div class="bg" <{if $smarty.session.uid && $userinfo.id==$smarty.session.uid}>style="background-image:url(__PUBLIC__/images/blogself.jpg)"<{/if}>>
 			<div class="box">
 				<div class="head">
 					<div class="title-box">
 						<div class="user-info">
 							<h1><a><span><{$userinfo.kidname}>的太空鱼</span></a></h1>
 							<div><a href="__URL__/person/uid/<{$userinfo.id}>.html">__URL__/person/uid/<{$userinfo.id}>.html</a></div>
-							<div class="user-say" title="<{$userinfo.persign}>"><span class="say-title">个人格言：</span>
-								<span class="say-content">
+							<div class="user-say" ><span class="say-title">个人格言：</span>
+								<span class="say-content" id="persign-show" title="<{$userinfo.persign}>">
 									<{$userinfo.persign|mbsubstr:55}>
 								</span>
+								<{if $smarty.session.uid && $userinfo.id==$smarty.session.uid}>
+								<div id="persign-change-box">
+									<input type="text" value="<{$userinfo.persign}>" id="persign-change"/>
+									<em id="persign-edit"></em>
+								</div>
+								<{/if}>
 							</div>
 						</div>
-						
+						<{if $smarty.session.uid && $userinfo.id==$smarty.session.uid}>
+						<script type="text/javascript">
+							$(".user-say").dblclick(function(){
+								$("#persign-show").hide();
+								$("#persign-change-box").show();
+							});
+							$("#persign-edit").click(function(){
+								var oin="";
+								var nin=$("#persign-change").val();
+								if(nin.length>55){
+									var oin=nin.substring(0,55)+"...";
+								}else{
+									oin=nin;
+								}
+								$("#persign-show").html(oin).attr('title',nin).show();
+								$("#persign-change-box").hide();
+								$.ajax({ url:'__APP__/ajax/persign',type:'post',data:{uid:<{$smarty.session.uid}>,persign:nin},dataType:'json'});
+							});
+						</script>
+						<{/if}>
 						<div class="user-line"></div>
 						<div class="user-block">
 							<span><a href="__APP__">首页</a></span>
@@ -100,7 +127,7 @@
 							<div class="left-per-title">
 								<span class="per-title">文章分类</span>
 								<{if $userinfo.id==$smarty.session.uid}>
-								<div class="edit">【<a href="#">管理</a>】</div>
+								<!-- <div class="edit">【<a href="#">管理</a>】</div> -->
 								<{/if}>
 							</div>
 							<div class="left-class-list">
@@ -148,8 +175,8 @@
 							</div>
 							<div class="left-per-search">
 								<div class="search" method="get">
-									<form action="__URL__/articlelist/uid/<{$userinfo.id}>.html">
-										<input type="text" name="kwords" class="input-text"/>
+									<form action="__URL__/articlelist/uid/<{$userinfo.id}>" method="get">
+										<input type="text" name="kwords" value="<{$smarty.request.kwords}>" class="input-text"/>
 										<input type="submit" value="" class="input-sub"/>
 									</form>
 								</div>

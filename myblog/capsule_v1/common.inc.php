@@ -87,3 +87,7 @@ function getClassCount($cid,$cuid){
 function getNetAge($ctime){
 	return floor((time()-$ctime)/(3600*365*24));
 }
+#获取类名
+function getClassName($cid){
+	return M('Class')->where('id='.$cid)->getField('class');
+}

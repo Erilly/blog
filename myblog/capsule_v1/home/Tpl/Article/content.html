@@ -1,19 +1,13 @@
 <{include file="Public/header.html"}>
 		<div class="right">
 			<div class="left-per-title">
-				<span class="per-title">文章正文</span>
+				<span class="per-title"><a href="__URL__/articlelist/uid/<{$userinfo.id}>/cid/<{$article.cid}>.html"><{$article.cid|getClassName}></a> > <{$article.title}></span>
 			</div>
 			<div class="right-content-box">
 				<div class="right-content">
 					<div class="right-title-box">
 						<h3 class="right-title"><{$article.title}></h3>
 						<span><{$article.ctime|date_format:'%Y-%m-%d'}></span>
-						<{if $smarty.session.uid}>
-						<div class="turn-it">
-							<em></em>
-							<span>转发</span>
-						</div>
-						<{/if}>
 					</div>
 					<div class="right-article">
 						<{$article.content}>

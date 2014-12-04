@@ -1,27 +1,33 @@
 	<{include file="Public/header.html"}>
 			<div class="right">
 				<div class="left-per-title">
-					<span class="per-title">文章列表</span>
+					<span class="per-title">
+						<{$smarty.request.cid|getClassName}>
+						<{if $smarty.request.kwords}>
+							关于<span style="color:red;margin:0 10px">"<{$smarty.request.kwords}>"</span>的搜索结果：
+						<{/if}>
+					</span>
 				</div>
 				<div class="right-content-box">
 						<ul class="article-list-box">
-							<{foreach from=$articlelist item='v'}>
-							<li class="article-list">
-								<a href="#" class="right-title"><{$v.title}></a>
-								<span class="article-time"><{$v.ctime|date_format:'%Y-%m-%d'}> <label>阅读次数：</label>(<{$v.readnum}>)</span>
-								<{if $smarty.session.uid && $smarty.session.uid!=$v.cuid}>
-								<div class="turn-it">
-									<em></em>
-									<span>转发</span>
-								</div>
-								<{else}>
-								<div class="turn-it">
-									<span>开启</span>
-									<span><a href="__URL__/edit/uid/<{$userinfo.id}>/aid/<{$v.id}>">编辑</a></span>
-								</div>
-								<{/if}>
-							</li>
-							<{/foreach}>
+							<{if $articlelist}>
+								<{foreach from=$articlelist item='v'}>
+								<li class="article-list">
+									<a href="__APP__/article/content/uid/<{$v.cuid}>/aid/<{$v.id}>.html" class="right-title"><{$v.title}></a>
+									<span class="article-time"><{$v.ctime|date_format:'%Y-%m-%d'}> <label>阅读次数：</label>(<{$v.readnum}>)</span>
+									<{if $smarty.session.uid && $smarty.session.uid==$v.cuid}>
+									<div class="turn-it">
+										<span id="turn" style="color:red">开启</span>
+										<span><a href="__URL__/edit/uid/<{$userinfo.id}>/aid/<{$v.id}>">编辑</a></span>
+									</div>
+									<{/if}>
+								</li>
+								<{/foreach}>
+								<div class="meneame pagebox"><{$page}></div>
+							<{else}>
+							<li><h1 style="margin:100px auto;width:65%;">对不起该类下还没有文章！</h1></li>
+							<{/if}>
+
 						</ul>
 					<div class="bottom-height"></div>
 				</div>

@@ -1,30 +1,31 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2014-12-03 17:29:43
+<?php /* Smarty version Smarty-3.1.6, created on 2014-12-04 17:27:46
          compiled from "D:/wamp2/wamp/www/blog/myblog/capsule_v1/home/Tpl\Public\headbar.html" */ ?>
-<?php /*%%SmartyHeaderCode:7767547ed80714c343-50559849%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:23748548001e7ddc867-65031085%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'e5619175797836e4263bd5e62930fbe0a53baa0b' => 
     array (
       0 => 'D:/wamp2/wamp/www/blog/myblog/capsule_v1/home/Tpl\\Public\\headbar.html',
-      1 => 1417496899,
+      1 => 1417685265,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '7767547ed80714c343-50559849',
+  'nocache_hash' => '23748548001e7ddc867-65031085',
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_547ed8071fbff',
+  'unifunc' => 'content_548001e7ebd89',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_547ed8071fbff')) {function content_547ed8071fbff($_smarty_tpl) {?>		<div class="head-top">
+<?php if ($_valid && !is_callable('content_548001e7ebd89')) {function content_548001e7ebd89($_smarty_tpl) {?>		<div class="head-top">
 			<div class="top-content">
 				<div class='logo'></div>
 				<div class='search'>
-					<form action="" method="get">
-						<input type="text" class="input-text"/>
+					<form action="__APP__/index" method="get">
+						<input type="text" name="kwords" value="<?php echo $_REQUEST['kwords'];?>
+" class="input-text"/>
 						<input type="submit" value="" class="input-sub"/>
 					</form>
 				</div>

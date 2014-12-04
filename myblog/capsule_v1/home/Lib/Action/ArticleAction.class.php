@@ -36,12 +36,34 @@ class ArticleAction extends CommonAction {
 	}
 	#文章列表
 	public function articlelist(){
+		//判断是否有搜索词
+		if(isset($_REQUEST['kwords'])&&!empty($_REQUEST['kwords'])){
+			$map['title']=array('like',"%{$_REQUEST['kwords']}%");
+		}
+
+		$m=M('Article');
+		//封装条件
 		$map['cuid']=$_REQUEST['uid'];
+		if(isset($_REQUEST['cid'])){
+			$map['cid']=$_REQUEST['cid'];
+		}
 		session('uid')!=$_REQUEST['uid']?$map['status']=1:'';
-		$articlelist=M('Article')->field('id,cuid,title,ctime,status,readnum')->where($map)->select();
-		// var_dump($res);die;
+
+		//调用分页函数
+		$limit=1;
+		$count=$m->where($map)->count();
+		$p=$this->dopage($count,$limit);
+		$articlelist=$m
+					->field('id,cuid,title,ctime,status,readnum')
+					->where($map)
+					->limit($p->firstRow.','.$p->listRows)
+					->select();
+
+		$this->assign('page',$p->show());
 		$this->assign('articlelist',$articlelist);
 		$this->display();
 	}
+
+
 
 }

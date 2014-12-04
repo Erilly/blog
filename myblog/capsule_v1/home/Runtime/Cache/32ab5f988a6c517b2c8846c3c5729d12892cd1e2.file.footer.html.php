@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2014-12-03 17:29:43
+<?php /* Smarty version Smarty-3.1.6, created on 2014-12-04 14:40:39
          compiled from "D:/wamp2/wamp/www/blog/myblog/capsule_v1/home/Tpl\Public\footer.html" */ ?>
-<?php /*%%SmartyHeaderCode:7492547ed80727ce90-72365665%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:26541548001e7f32ba1-88506016%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,15 +11,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '7492547ed80727ce90-72365665',
+  'nocache_hash' => '26541548001e7f32ba1-88506016',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_547ed8073115b',
+  'unifunc' => 'content_548001e805ddc',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_547ed8073115b')) {function content_547ed8073115b($_smarty_tpl) {?>				<script src="__PUBLIC__/js/per_config.js" type="text/javascript"></script>
+<?php if ($_valid && !is_callable('content_548001e805ddc')) {function content_548001e805ddc($_smarty_tpl) {?>				<script src="__PUBLIC__/js/per_config.js" type="text/javascript"></script>
 				<a href="#back" class="back-top"></a>
 				<div class="overburden"></div>
 				<div class="login-window">

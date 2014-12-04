@@ -1,20 +1,22 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2014-12-03 17:29:42
+<?php /* Smarty version Smarty-3.1.6, created on 2014-12-04 17:15:24
          compiled from "D:/wamp2/wamp/www/blog/myblog/capsule_v1/home/Tpl\Public\header.html" */ ?>
-<?php /*%%SmartyHeaderCode:31702547ed806b62299-77475433%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:11223548001e796fae2-55137788%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'e383e45afe709c23ddf01ddbb87c1816284a39cc' => 
     array (
       0 => 'D:/wamp2/wamp/www/blog/myblog/capsule_v1/home/Tpl\\Public\\header.html',
-      1 => 1417597894,
+      1 => 1417684523,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '31702547ed806b62299-77475433',
+  'nocache_hash' => '11223548001e796fae2-55137788',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.6',
+  'unifunc' => 'content_548001e7d62a6',
   'variables' => 
   array (
     'userinfo' => 0,
@@ -22,15 +24,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'v' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_547ed8070c37a',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_547ed8070c37a')) {function content_547ed8070c37a($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_548001e7d62a6')) {function content_548001e7d62a6($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>JC</title>
 		<link href="__PUBLIC__/css/blog-1.css" rel="stylesheet" type="text/css" />
+				<link href="__PUBLIC__/css/page.css" rel="stylesheet" type="text/css" />
+
 		<script src="__PUBLIC__/js/jquery-1.8.0.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			$(function(){
@@ -45,8 +47,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<body>
 		<?php echo $_smarty_tpl->getSubTemplate ("Public/headbar.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
-		<div id="back"></div>
-		<div class="bg">
+		<div id="back" ></div>
+		<div class="bg" <?php if ($_SESSION['uid']&&$_smarty_tpl->tpl_vars['userinfo']->value['id']==$_SESSION['uid']){?>style="background-image:url(__PUBLIC__/images/blogself.jpg)"<?php }?>>
 			<div class="box">
 				<div class="head">
 					<div class="title-box">
@@ -56,15 +58,42 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							<div><a href="__URL__/person/uid/<?php echo $_smarty_tpl->tpl_vars['userinfo']->value['id'];?>
 .html">__URL__/person/uid/<?php echo $_smarty_tpl->tpl_vars['userinfo']->value['id'];?>
 .html</a></div>
-							<div class="user-say" title="<?php echo $_smarty_tpl->tpl_vars['userinfo']->value['persign'];?>
-"><span class="say-title">个人格言：</span>
-								<span class="say-content">
+							<div class="user-say" ><span class="say-title">个人格言：</span>
+								<span class="say-content" id="persign-show" title="<?php echo $_smarty_tpl->tpl_vars['userinfo']->value['persign'];?>
+">
 									<?php echo mbsubstr($_smarty_tpl->tpl_vars['userinfo']->value['persign'],55);?>
 
 								</span>
+								<?php if ($_SESSION['uid']&&$_smarty_tpl->tpl_vars['userinfo']->value['id']==$_SESSION['uid']){?>
+								<div id="persign-change-box">
+									<input type="text" value="<?php echo $_smarty_tpl->tpl_vars['userinfo']->value['persign'];?>
+" id="persign-change"/>
+									<em id="persign-edit"></em>
+								</div>
+								<?php }?>
 							</div>
 						</div>
-						
+						<?php if ($_SESSION['uid']&&$_smarty_tpl->tpl_vars['userinfo']->value['id']==$_SESSION['uid']){?>
+						<script type="text/javascript">
+							$(".user-say").dblclick(function(){
+								$("#persign-show").hide();
+								$("#persign-change-box").show();
+							});
+							$("#persign-edit").click(function(){
+								var oin="";
+								var nin=$("#persign-change").val();
+								if(nin.length>55){
+									var oin=nin.substring(0,55)+"...";
+								}else{
+									oin=nin;
+								}
+								$("#persign-show").html(oin).attr('title',nin).show();
+								$("#persign-change-box").hide();
+								$.ajax({ url:'__APP__/ajax/persign',type:'post',data:{uid:<?php echo $_SESSION['uid'];?>
+,persign:nin},dataType:'json'});
+							});
+						</script>
+						<?php }?>
 						<div class="user-line"></div>
 						<div class="user-block">
 							<span><a href="__APP__">首页</a></span>
@@ -147,7 +176,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 							<div class="left-per-title">
 								<span class="per-title">文章分类</span>
 								<?php if ($_smarty_tpl->tpl_vars['userinfo']->value['id']==$_SESSION['uid']){?>
-								<div class="edit">【<a href="#">管理</a>】</div>
+								<!-- <div class="edit">【<a href="#">管理</a>】</div> -->
 								<?php }?>
 							</div>
 							<div class="left-class-list">
@@ -204,8 +233,9 @@ $_smarty_tpl->tpl_vars['v']->_loop = true;
 							<div class="left-per-search">
 								<div class="search" method="get">
 									<form action="__URL__/articlelist/uid/<?php echo $_smarty_tpl->tpl_vars['userinfo']->value['id'];?>
-.html">
-										<input type="text" name="kwords" class="input-text"/>
+" method="get">
+										<input type="text" name="kwords" value="<?php echo $_REQUEST['kwords'];?>
+" class="input-text"/>
 										<input type="submit" value="" class="input-sub"/>
 									</form>
 								</div>
