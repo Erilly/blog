@@ -6,8 +6,8 @@ define('SITE_SESSION_DOMAIN', '');
 define('SITE_COOKIE_DOMAIN', '');
 
 #定义网站域名
-define('SITE_DOMAIN', 'D:/wamp/www/blog/myblog/capsule_v1/');
-define('SITE_PATH', 'D:/wamp/www/blog/myblog/capsule_v1/');
+define('SITE_DOMAIN', 'D:/wamp2/wamp/www/blog/myblog/capsule_v1/');
+define('SITE_PATH', 'D:/wamp2/wamp/www/blog/myblog/capsule_v1/');
 define('SITE_URL','');
 
 #SEO相关配置
