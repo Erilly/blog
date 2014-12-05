@@ -16,4 +16,23 @@ class AjaxAction extends Action
 			exit();
 		}
 	}
+	#上传用户头像
+	public function upfile(){
+		// echo "__PUBLIC__";die;
+		$uid=session('uid');
+		$path = SITE_PATH."/uploads/headpic/";
+		$filename = $uid.'_'.date('Ymd',time()).".jpg";  
+
+		$src=base64_decode($_POST['pic']);
+		$pic=base64_decode($_POST['pic1']);    
+
+		file_put_contents($path.$filename,$pic);
+
+		$rs['headpic']="/uploads/headpic/".$filename;
+		$id=M('User')->where('id='.session('uid'))->save($rs);
+		
+		$rs['status'] = 1;
+		echo json_encode($rs);
+		
+	}
 }

@@ -99,6 +99,31 @@ class PublicAction extends Action
 		}
 
 	}
+	#修改用户信息
+	public function updateinfo(){
+		// var_dump($_POST);
+		//验证验证码
+		if(session('verify')!=md5($_POST['verify'])){
+			$this->error('验证码错误！');
+			exit();
+		}
+		//预处理注册数据
+		$uid=$_POST['uid'];
+		unset($_POST['verify'],$_POST['uid']);
+		$_POST['ctime']=time();
+		$_POST['birth']=strtotime($_POST['birth']);
+		//插入数据
+		$id=M('User')->where('id='.$uid)->save($_POST);
+
+		if($id){
+			$this->success('修改成功！');
+			exit();
+		}else{
+			$this->error('修改失败！');
+			exit();
+		}
+
+	}
 	#创建验证码
 	public function verify()
 	{

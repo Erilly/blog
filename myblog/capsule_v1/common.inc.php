@@ -25,7 +25,7 @@ function getheadpic($uid){
 	if($head['headpic']){
 		return $head['headpic'];
 	}else{
-		return "__PUBLIC__/images/{$head['gender']}.jpg";
+		return "/public/images/{$head['gender']}.jpg";
 	}
 }
 #获取用户名

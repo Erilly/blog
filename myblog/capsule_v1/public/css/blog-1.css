@@ -118,7 +118,7 @@ p{line-height: 20pt}
 .left-per-title{height:15px;font-size: 12px;padding:5px;background-color:#f1f1f1; border-bottom: 1px solid #c3c3c3;}
 .left-per-title .per-title{float:left;font-size: 13px;font-weight:bold;color:#3e3e3e;}
 .left-per-title .edit{float:right;}
-.left-per-pic{width:180px;height: 180px;margin:0 auto;border:1px solid #c3c3c3;margin-top: 15px;}
+.left-per-pic{width:162px;height: 162px;margin:0 auto;border:1px solid #c3c3c3;margin-top: 15px;}
 .left-per-name{width:120px;height:23px;text-align: center;margin:10px auto;}
 .left-per-name span{font-size: 17px;font-weight:bold;}
 .left-per-focus{width:120px;height:23px;padding:10px;margin:0 auto;}
@@ -291,7 +291,7 @@ p{line-height: 20pt}
     border:1px solid #ddd;
     left: 10px;
     position: absolute;
-    top: 10px;
+    top: 5px;
 
 }
 .index-author{
@@ -357,3 +357,61 @@ p{line-height: 20pt}
 .foot{clear:both;padding-top:50px;}
 .foot-content{width:100%;margin:0 auto;background:#5e5e5e;text-align: center;}
 .foot-content span{font-size:12px}
+
+
+/*修改基本资料页面*/
+.register-box{
+    margin:0 auto;
+}
+label{
+    float: left;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: right;
+    width: 90px;
+}
+label i{
+    color: #f00;
+    padding-right: 4px;
+}
+.register-box ul{width:80%;margin:10px auto;padding:50px;}
+.register-box ul li{width:100%;line-height: 25pt;position:relative;margin:15px auto;}
+.re-input{margin-left: 100px;width:230px;height:30px;}
+.re-clear{border:none;}
+.re-input-bor{border:1px solid #ccc;height: 26px;width:200px;  border-radius: 4px;padding:0 5px; }
+.re-verify-input{width:110px;}
+.re-sub-btn{
+    background:#57e2a8;
+    border:medium none;
+    cursor: pointer;
+    font-size: 20px;
+    color:#fff;
+    overflow: hidden;
+    text-align: center;
+    top: 3px;
+    width:200px;
+    height:35px;
+    border-radius:7px;
+
+}
+.register-box ul li span{ 
+    font-size: 13px;
+    left: 375px;
+    padding-left: 20px;
+    position: absolute;
+    top: 0px;
+    width: 210px;
+    height:80%;
+    vertical-align: middle;
+}
+.re-input select{
+    border: 1px solid #ddd;
+    vertical-align: middle;
+    height:26px;
+    line-height: 21px;
+    border-radius:4px;
+    padding:0 5px;
+}
+/*.re-sp select{margin:5px auto 0 auto;}*/
+.re-vertify-img{position: absolute;top:1px;left:240px;height: 26px;}
+.re-submit{width:200px;margin:30px auto 0 auto;}

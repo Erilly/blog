@@ -64,6 +64,11 @@ class ArticleAction extends CommonAction {
 		$this->display();
 	}
 
-
+	#修改个人资料
+	public function setinfo(){
+		$res=M('User')->find($_GET['uid']);
+		$this->assign('info',$res);
+		$this->display();
+	}
 
 }

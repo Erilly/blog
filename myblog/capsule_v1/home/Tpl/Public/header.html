@@ -71,7 +71,7 @@
 					<div class="user-do">
 						<div class="user-do-list"><a href="__URL__/create/uid/<{$smarty.session.uid}>.html">编写文章</a></div>
 						<div class="user-do-list"><a href="__URL__/person/uid/<{$smarty.session.uid}>.html">个人中心</a></div>
-						<div class="user-do-list"><a href="__URL__/setting/uid/<{$smarty.session.uid}>.html">基本设置</a></div>
+						<div class="user-do-list"><a href="__URL__/setinfo/uid/<{$smarty.session.uid}>.html">基本设置</a></div>
 					</div>
 					<{/if}>
 				</div>
@@ -81,12 +81,12 @@
 							<div class="left-per-title">
 								<span class="per-title">个人资料</span>
 								<{if $userinfo.id==$smarty.session.uid}>
-								<div class="edit">【<a href=href="__URL__/setinfo/uid/<{$userinfo.id}>.html">编辑</a>】</div>
+								<div class="edit">【<a href="__URL__/setinfo/uid/<{$userinfo.id}>.html">编辑</a>】</div>
 								<{/if}>
 							</div>
 
 							<div class="left-per-pic">
-								<a href="#"><img src="<{$userinfo.id|getheadpic}>" width="180" height="180" alt="个人头像" /></a>
+								<a <{if $userinfo.id==$smarty.session.uid}>href="__URL__/setheadpic/uid/<{$smarty.session.uid}>"<{/if}>><img src="<{$userinfo.id|getheadpic}>" alt="个人头像" id="avatar_priview" width="162" height="162"/></a>
 							</div>
 							<div class="left-per-name">
 								<span><{$userinfo.kidname}></span>
@@ -120,6 +120,20 @@
 										<span><{$userinfo.ctime|getNetAge}>年</span>
 									</li>
 								</ul>
+							</div>
+							<div class="bottom-height"></div>
+						</div>
+						<div class="left-list">
+							<div class="left-per-title">
+								<span class="per-title">搜索他的文章</span>
+							</div>
+							<div class="left-per-search">
+								<div class="search" method="get">
+									<form action="__URL__/articlelist/uid/<{$userinfo.id}>" method="get">
+										<input type="text" name="kwords" value="<{$smarty.request.kwords}>" class="input-text"/>
+										<input type="submit" value="" class="input-sub"/>
+									</form>
+								</div>
 							</div>
 							<div class="bottom-height"></div>
 						</div>
@@ -169,18 +183,5 @@
 							<div class="bottom-height"></div>
 						</div>
 						<{/if}>
-						<div class="left-list">
-							<div class="left-per-title">
-								<span class="per-title">搜索他的文章</span>
-							</div>
-							<div class="left-per-search">
-								<div class="search" method="get">
-									<form action="__URL__/articlelist/uid/<{$userinfo.id}>" method="get">
-										<input type="text" name="kwords" value="<{$smarty.request.kwords}>" class="input-text"/>
-										<input type="submit" value="" class="input-sub"/>
-									</form>
-								</div>
-							</div>
-							<div class="bottom-height"></div>
-						</div>
+						
 					</div>
