@@ -29,8 +29,8 @@
 								<span class="say-content">你从哪里来我的朋友，好像一只蝴蝶飞进我的窗口，好像一只蝴蝶飞进我的窗口，好像一只蝴蝶飞进我的窗口
 								</span>
 							</div>
-						</div>	
-					</div>					
+						</div>				
+					</div>
 				</div>
 
 		<div class="index-bg">
@@ -68,13 +68,14 @@
 							<div class="index-author">
 								<a href="__APP__/article/person/uid/<{$v.cuid}>.html"><{$v.cuid|getName}></a>
 								<div class="index-article-title">
-									<a href="__APP__/article/content/uid/<{$v.cuid}>/aid/<{$v.id}>.html" class="article-title-style"><{$v.title|mbsubstr:16}></a>
+									<a href="__APP__/article/content/uid/<{$v.cuid}>/aid/<{$v.id}>.html" class="article-title-style"><{$v.title|mbsubstr:13}></a>
 									<div class="index-article-time">
 										<span>创建时间：<{$v.ctime|date_format:"%Y-%m-%d"}></span>
 										<span><{if <{$v.readnum}>}>访问次数：(<{$v.readnum}>)<{/if}></span>
 									</div>
 								</div>
 							</div>
+							<div class="clearres"></div>
 						</li>
 						<{/foreach}>
 					</ul>

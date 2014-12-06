@@ -3,23 +3,43 @@
 *自定义公共函数库
 */
 
-#表单防xss攻击过滤
+/**
+*表单防xss攻击过滤
+*@param string $data 处理的字符串
+*@return string 
+*/
 function input_filter($data){
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
-#加密算法
+
+/**
+*加密算法
+*@param string $data 处理的字符串
+*@return string 
+*/
 function secret($data){
 	return md5(C('SITE_KEY').'+-*/'.md5($data));
 }
-#字符串截取操作
+
+/**
+*字符串截取操作
+*@param string $txt 处理的字符串
+*@param int $length 截取的长度
+*@return string 
+*/
 function mbsubstr($txt, $length){
 	return (mb_strlen($txt, 'utf-8') <= $length) ? $txt : mb_substr($txt, 0, $length, 'utf-8').'…';
 }
 
-#获取用户头像
+
+/**
+*获取用户头像
+*@param int $uid 处理的id
+*@return string 返回图片地址
+*/
 function getheadpic($uid){
 	$head=M('User')->field('gender,headpic')->find($uid);
 	if($head['headpic']){
@@ -28,19 +48,39 @@ function getheadpic($uid){
 		return "/public/images/{$head['gender']}.jpg";
 	}
 }
-#获取用户名
+
+/**
+*获取用户名
+*@param int $uid 处理的id
+*@return string 
+*/
 function getName($uid){
 	return M('User')->where('id='.$uid)->getField('kidname');
 }
-#获取用户性别
+
+/**
+*获取用户性别
+*@param int $gender 处理的id
+*@return string 
+*/
 function getGender($gender){
 	return $gender==2?'女':'男';
 }
-#获取用户年龄
+
+/**
+*获取用户年龄
+*@param int $birth 处理的时间戳
+*@return int
+*/
 function getAge($birth){
 	return floor((time()-$birth)/(3600*365*24));
 }
-#获取用户的星座
+
+/**
+*获取用户星座
+*@param int $birth 处理的时间戳
+*@return string 
+*/
 function getStar($birth){
 	$m=date('md',$birth);
 	// 双鱼座：2月20日 - 3月20日
@@ -68,7 +108,14 @@ function getStar($birth){
 	// 水瓶座：1月21日 - 2月19日
 	if('0121'<=$m && $m<='0219' ){ return getIcon('水瓶座',-53,-10); exit();}
 }
-#获取星座图标样式
+
+/**
+*获取星座图标样式
+*@param string $name 星座名
+*@param int $x X方向距离
+*@param int $y Y方向距离
+*@return string 返回拼装好的信息
+*/
 function getIcon($name,$x,$y){
 	$str=$name;
 	$str.="<div style=\"
@@ -81,18 +128,34 @@ function getIcon($name,$x,$y){
 		\">";
 	return $str;
 }
-#获取每类文章的总数
+
+/**
+*获取类下文章的总数
+*@param int $cid 文章类id
+*@param int $cuid 文章作者id
+*@return int 
+*/
 function getClassCount($cid,$cuid){
 	$map['cid']=$cid;
 	$cuid!=0?$map['cuid']=$cuid:'';
 	return M('Article')->where($map)->count();
 	
 }
-#获取用户的网龄
+
+/**
+*获取用户的网龄
+*@param int $ctime 用户注册时间戳
+*@return float 返回一个精确到小数点后两位的浮点数 
+*/
 function getNetAge($ctime){
-	return floor((time()-$ctime)/(3600*365*24));
+	return number_format((time()-$ctime)/(3600*365*24),2);
 }
-#获取类名
+
+/**
+*获取类名
+*@param int $cid 文章类id
+*@return string 
+*/
 function getClassName($cid){
 	return M('Class')->where('id='.$cid)->getField('class');
 }

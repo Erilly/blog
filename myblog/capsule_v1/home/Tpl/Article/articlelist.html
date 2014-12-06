@@ -13,13 +13,17 @@
 							<{if $articlelist}>
 								<{foreach from=$articlelist item='v'}>
 								<li class="article-list">
-									<a href="__APP__/article/content/uid/<{$v.cuid}>/aid/<{$v.id}>.html" class="right-title"><{$v.title}></a>
-									<span class="article-time"><{$v.ctime|date_format:'%Y-%m-%d'}> <label>阅读次数：</label>(<{$v.readnum}>)</span>
-									<{if $smarty.session.uid && $smarty.session.uid==$v.cuid}>
-									<div class="turn-it">
-										<span id="turn" style="color:red">开启</span>
-										<span><a href="__URL__/edit/uid/<{$userinfo.id}>/aid/<{$v.id}>">编辑</a></span>
+									<a href="__APP__/article/content/uid/<{$v.cuid}>/aid/<{$v.id}>.html"><{$v.title}></a>
+									<div class="article-list-right">
+										<span class="article-time"><{$v.ctime|date_format:'%Y-%m-%d'}> <label class="article-read">阅读次数：</label>(<{$v.readnum}>)</span>
+										<{if $smarty.session.uid && $smarty.session.uid==$v.cuid}>
+										<div class="turn-it">
+											<em class="turn-common <{if $v.status==1}>turn-on<{else}>turn-lock<{/if}>" turnid="<{$v.id}>"></em>
+											<em class="turn-common2 article-del" turnid="<{$v.id}>"></em>
+											<span><a href="__URL__/edit/uid/<{$userinfo.id}>/aid/<{$v.id}>">编辑</a></span>
+										</div>
 									</div>
+									<div class="clearres"></div>
 									<{/if}>
 								</li>
 								<{/foreach}>
@@ -33,4 +37,32 @@
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+			$(function(){
+				$(".turn-common").unbind().bind("click",function(){
+					var obj=$(this);
+					doAjax("__APP__/ajax/turnLock",{"aid":obj.attr("turnid")},
+							function($data){
+								if($data['status']){
+									obj.removeClass('turn-lock').addClass('turn-on');
+								}else{
+									obj.removeClass('turn-on').addClass('turn-lock');
+								}
+							}
+						);		
+				});
+				$(".turn-common2").unbind().bind("click",function(){
+					var obj=$(this);
+					doAjax("__APP__/ajax/delIt",{"aid":obj.attr("turnid")},
+							function(data){
+								if(data['status']){
+									location.reload();
+								}
+							}
+						);
+				});	
+				
+			});
+			
+		</script>
 <{include file="Public/footer.html"}>

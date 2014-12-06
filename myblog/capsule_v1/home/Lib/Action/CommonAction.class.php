@@ -17,6 +17,7 @@ class CommonAction extends Action{
 		if(isset($_REQUEST['aid'])){
 			$map['id']=$_REQUEST['aid'];
 			$article=M('Article')->where($map)->find();
+			
 	    	if(!$article){ $this->error('对不起,文章不存在!'); }
 			$this->assign('article',$article);
 		}
@@ -24,16 +25,17 @@ class CommonAction extends Action{
 		$this->assign('class',M('Class')->where('status=1')->select());
 
 	}
-	/*
-	* 公共分页函数
-	* @param $count数据条数
-	* @param $limit每页显示条数
-	*/
+    /**
+    *公共分页函数
+    *@param int $count 数据条数
+    *@param int $limit 每页显示条数
+    *@return object
+    */
 	public function dopage($count,$limit){
         import('ORG.Util.Page');// 导入分页类
         $p=new Page($count,$limit);
         $p->lastSuffix=false;
-        $p->setConfig('header','<li class="rows">第<b>%nowPage%</b>页/共<b>%totalPage%</b>页</li>');
+        $p->setConfig('header',"<li class='rows'>第<b>%nowPage%</b>页/共<b>%totalPage%</b>页</li>");
         $p->setConfig('prev','上一页');
         $p->setConfig('next','下一页');
         $p->setConfig('last','末页');

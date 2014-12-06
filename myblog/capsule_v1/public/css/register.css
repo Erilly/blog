@@ -103,7 +103,23 @@ p{line-height: 20pt}
 }
 .global_close{font-size: 20px;width:16px;height:16px;text-align: center;line-height: 16px;cursor: pointer;background: url("../images/quxiao.png");}
 .global_log_btn{cursor: pointer;}
-
+#error-message{
+    font-size: 15px;
+    min-width:100px;
+    height:25px;
+    border:1px solid orange;
+    border-radius:4px;
+    position:absolute;
+    z-index:1;
+    top: 16px;
+    left:135px;
+    background-color:#fff;
+    box-shadow:red 0px 0px 2px;
+    display:none;
+    text-align: center;
+    line-height: 25px;
+    color:red;
+}
 /*页尾*/
 .foot *{font-size: 13px;color:#fff;}
 .foot{clear:both;padding-top:50px;}

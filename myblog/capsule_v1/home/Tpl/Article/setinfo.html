@@ -22,7 +22,7 @@
 							<ul>
 								<input type="hidden" name="uid" value="<{$smarty.request.uid}>"/>
 								<li>
-									<label><i></i>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label>
+									<label class="setinfo-tag"><i></i>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label>
 									<div class="re-input re-clear">
 										<input type="radio" name="gender" value="1" <{if $info.gender=='1'}>checked <{/if}> /> 男
 										<input type="radio" name="gender" value="2" <{if $info.gender=='2'}>checked <{/if}> /> 女
@@ -30,7 +30,7 @@
 									
 								</li>
 								<li>
-									<label><i></i>婚&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姻：</label>
+									<label class="setinfo-tag"><i></i>婚&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姻：</label>
 									<div class="re-input">
 										<select name="merry">
 											<option value="就不告诉你" <{if $info.merry=='就不告诉你'}>selected <{/if}>>就不告诉你</option>
@@ -42,14 +42,14 @@
 									
 								</li>
 								<li>
-									<label><i></i>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：</label>
+									<label class="setinfo-tag"><i></i>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：</label>
 									<div class="re-input ">
 										<input type="text" id="csny" name="birth" class="re-input-bor" style="width:120px" value="<{$info.birth|date_format:'%Y-%m-%d'}>" />
 									</div>
 									<span id="csnyTip"></span>
 								</li>
 								<li>
-									<label><i></i>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</label>
+									<label class="setinfo-tag"><i></i>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</label>
 									<div class="re-input">
 										<select name="job">
 											<option value="保密" <{if $info.job=='保密'}>selected <{/if}>>保密</option>
@@ -78,7 +78,7 @@
 									<span id="test1Tip"></span>
 								</li>
 								<li>
-									<label><i></i>现&nbsp;&nbsp;居&nbsp;&nbsp;地：</label>
+									<label class="setinfo-tag"><i></i>现&nbsp;&nbsp;居&nbsp;&nbsp;地：</label>
 									<div class="re-input re-clear">
 										<select name="live_province" id="live_province">
 											<option value="0">请选择省份</option>
@@ -89,7 +89,7 @@
 									</div>
 								</li>
 								<li>
-									<label><i></i>家&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;乡：</label>
+									<label class="setinfo-tag"><i></i>家&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;乡：</label>
 									<div class="re-input ">
 										<select name="ht_province" id="ht_province">
 										<option value="0">请选择省份</option>
@@ -100,7 +100,7 @@
 									</div>
 								</li>
 								<li>
-									<label><i></i>验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
+									<label class="setinfo-tag"><i></i>验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
 									<div class="re-input re-verify"><input type="text" name="verify" class="re-input-bor re-verify-input" id="reg-verify"/><img src="__APP__/Public/verify/" class="re-vertify-img vimg"/></div>
 									<span id="reg-verifyTip"></span>
 								</li>
