@@ -30,11 +30,7 @@ CREATE TABLE `article` (
   `status` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '文章状态',
   `readnum` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '阅读次数',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Data for the table `article` */
-
-insert  into `article`(`id`,`cuid`,`cid`,`title`,`content`,`ctime`,`status`,`readnum`) values (1,2,5,'不落的太阳','说的分手分手的放松放松放松对方水电费',333,1,333),(2,2,5,'天蓝蓝','士大夫撒发生法撒旦法师',222,1,222),(3,2,5,'青草香','阿萨德飞洒发撒旦法师',111,1,111);
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Table structure for table `class` */
 
@@ -48,9 +44,30 @@ CREATE TABLE `class` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*Data for the table `class` */
+/*Table structure for table `comment` */
 
-insert  into `class`(`id`,`class`,`ctime`,`status`) values (1,'情感',11,0),(2,'科技',33,0),(3,'旅游',22,0),(4,'军事',55,0),(5,'文化',44,0);
+DROP TABLE IF EXISTS `comment`;
+
+CREATE TABLE `comment` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `aid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '文章id',
+  `euid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '评论人id',
+  `comment` text COLLATE utf8_unicode_ci COMMENT '评论',
+  `ctime` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '评论时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Table structure for table `read_log` */
+
+DROP TABLE IF EXISTS `read_log`;
+
+CREATE TABLE `read_log` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `aid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '文章id',
+  `ip` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '访客ip',
+  `ctime` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT '访问时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Table structure for table `user` */
 
@@ -73,26 +90,11 @@ CREATE TABLE `user` (
   `persign` varchar(125) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '个人签名',
   `headpic` varchar(125) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '个人头像',
   `ctime` int(11) unsigned DEFAULT '0' COMMENT '创建时间',
-  `status` smallint(2) unsigned NOT NULL DEFAULT '1' COMMENT '状态:1正常，0禁用',
+  `status` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '状态:1正常，0禁用',
   `logip` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '登陆IP',
-  `lastlog` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '最后登陆时间',
+  `lastlog` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '最后登陆时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Data for the table `user` */
-
-insert  into `user`(`id`,`email`,`kidname`,`password`,`user`,`age`,`gender`,`job`,`birth`,`live_province`,`live_city`,`ht_province`,`ht_city`,`persign`,`headpic`,`ctime`,`status`,`logip`,`lastlog`) values (2,'1617507676@qq.com','jack','111','杨杰',20,1,'软件',0,NULL,NULL,NULL,NULL,NULL,NULL,0,1,NULL,0),(3,'1601676@qq.com','aaaa','111111','杨杰',0,1,'计算机/网络',0,'35','0',NULL,'0',NULL,NULL,1417286841,1,NULL,0),(4,'1601676@qq.com','aaaa','111111','杨杰',0,1,'计算机/网络',0,'35','0',NULL,'0',NULL,NULL,1417286859,1,NULL,0),(5,'12111@qq.com','aa','fba19a6a8f1962f8137e759694b5a904','杨杰',0,1,'计算机/网络',0,'23','11',NULL,NULL,NULL,NULL,1417287221,1,NULL,0),(6,'1211231@qq.com','aa','fba19a6a8f1962f8137e759694b5a904','杨杰',0,1,'计算机/网络',336844800,'19','12',NULL,NULL,NULL,NULL,1417287382,1,NULL,0);
-
-/*Table structure for table `user_article` */
-
-DROP TABLE IF EXISTS `user_article`;
-
-CREATE TABLE `user_article` (
-  `uid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
-  `aid` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '文章id'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Data for the table `user_article` */
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

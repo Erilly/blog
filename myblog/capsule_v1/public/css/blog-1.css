@@ -9,7 +9,13 @@ body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, label, dl, dt, dd, fieldset, 
 }
 *{margin:0;padding:0}
 ul{list-style: none;}
-.bg{background:#000 url("../images/sinablogb.jpg") no-repeat center top;min-height:600px;width:100%;margin-top: 30px;}
+.bg{
+    background:#000 url("../images/sinablogb.jpg") no-repeat 0 0;
+    background-size: 100% auto;
+    min-height:600px;
+    width:100%;
+    margin-top: 30px;
+}
 .box{width:950px;height:100%;margin:0 auto;}
 a{text-decoration:none;color:#5e5e5e;}
 p{line-height: 20pt}
@@ -183,7 +189,7 @@ p{line-height: 20pt}
 .comment-pic{width:90px;height:100%;float:left;}
 .comment-pic .comment-imag{width:50px;height:50px;border:1px solid #ddd;display:block;margin:0 auto;border-radius:32px;}
 .comment-uname{display: block;text-align: center;margin-top: 5px;}
-.comment-content{width: 85%;float:right;}
+.comment-content{width: 85%;float:right;margin-top:5px;}
 .clearres{clear: both;}
 /*文章列表页*/
 .article-list-box {width: 96%;margin:25px auto;}
@@ -257,9 +263,14 @@ p{line-height: 20pt}
 .pagebox *{font-size: 15px}
 /*blog首页*/
 .index-title-box *{color:#fff;}
-.index-title-box{position: absolute;top:70px;left:200px;width:450px;overflow:hidden ;}
-.index-logo{width:150px;height:100px;border-radius:15px;box-shadow: #eee 0px 0px 30px inset;background: url('../images/logo150x100.png') no-repeat 0px -3px;}
-.index-head{width:100%;height:300px;background:url('../images/newbg.jpg') no-repeat 0px 0px;}
+.index-title-box{position: absolute;top:50px;left:200px;width:450px;overflow:hidden ;}
+.index-logo{
+    width:150px;
+    height:150px;
+    border-radius:76px;
+    box-shadow: #eee 0px 0px 30px inset;
+    background: url('../images/logo150x100.png') no-repeat -4px 21px;}
+.index-head{width:100%;height:340px;background:url('../images/newbg.jpg') no-repeat fixed 0 0 ; background-size: 100% auto;}
 .index-bg{background:#fff;}
 .index-main{min-height:300px;background: #fff;border-radius: 6px;}
 .class-list-top{position:relative;width:100%;padding-top:20px;height:100px;}
