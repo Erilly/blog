@@ -23,7 +23,7 @@ p{line-height: 20pt}
 /*导航条*/
 .head-top{height:30px;width:100%;background-color: #f1f1f1;position: fixed;z-index:1000;top:0;}
 .top-content{width:950px;margin:0 auto;font-size: 15px;}
-.top-content .logo{float:left;width:100px;height:30px;background:url("../images/logo.gif") no-repeat;}
+.top-content .logo{float:left;width:100px;height:30px;background:url("../images/100x30.png") no-repeat;margin-right: 5px}
 .top-content .perinfo{width:200px;float:right;}
 .top-content .perinfo li{float:left;line-height: 30px;position:relative;text-align: center;padding:0 5px;}
 .top-content .perinfo li ul{position:absolute;background-color:#ddd;left:0; top:30px;display:none;}
@@ -77,9 +77,9 @@ p{line-height: 20pt}
 .head{height:270px;position: relative;}
 .title-box *{color:#fff;}
 .title-box{position: absolute;top:70px;left:0;width:450px;overflow:hidden ;}
-.user-say{margin-top:20px;height:43px;overflow:hidden ;}
+.user-say{margin-top:15px;height:43px;overflow:hidden ;}
 .user-say .say-title{font-weight: bold;}
-.user-say .say-content{font-size:14px;line-height: 15pt;}
+.user-say .say-content{font-size:14px;line-height: 15pt;text-indent:2em;}
 .user-line{background: url("../images/blognavbg.png") no-repeat;height: 1px;width: 100%;margin:10px 0;}
 .user-do *{color:#000;}
 .user-do{
@@ -263,13 +263,13 @@ p{line-height: 20pt}
 .pagebox *{font-size: 15px}
 /*blog首页*/
 .index-title-box *{color:#fff;}
-.index-title-box{position: absolute;top:50px;left:200px;width:450px;overflow:hidden ;}
+.index-title-box{position: absolute;top:50px;left:200px;width:515px;overflow:hidden ;}
 .index-logo{
-    width:150px;
-    height:150px;
-    border-radius:76px;
+    width:155px;
+    height:155px;
+    border-radius:78px;
     box-shadow: #eee 0px 0px 30px inset;
-    background: url('../images/logo150x100.png') no-repeat -4px 21px;}
+    background: url('../images/150x100.png') no-repeat 1px 24px;}
 .index-head{width:100%;height:340px;background:url('../images/newbg.jpg') no-repeat fixed 0 0 ; background-size: 100% auto;}
 .index-bg{background:#fff;}
 .index-main{min-height:300px;background: #fff;border-radius: 6px;}
