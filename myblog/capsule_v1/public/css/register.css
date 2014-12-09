@@ -16,7 +16,7 @@ p{line-height: 20pt}
 /*导航条*/
 .head-top{height:30px;width:100%;background-color: #f1f1f1;position: fixed;z-index: 1000;top:0;}
 .top-content{width:950px;margin:0 auto;font-size: 15px;}
-.top-content .logo{float:left;width:100px;height:30px;background:url("../images/logo.gif") no-repeat;}
+.top-content .logo{float:left;width:100px;height:30px;background:url("../images/100x30.png") no-repeat;margin-right: 5px;}
 .top-content .perinfo{width:200px;float:right;}
 .top-content .perinfo li{float:left;line-height: 30px;position:relative;text-align: center;padding:0 5px;}
 .top-content .perinfo li ul{position:absolute;background-color:#ddd;left:0; top:30px;display:none;}

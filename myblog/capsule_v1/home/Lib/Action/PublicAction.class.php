@@ -26,9 +26,14 @@ class PublicAction extends Action
 			$map['email']=$name;
 			$userinfo=M('User')->where($map)->find();//获取用户信息
 		}
-		
+
 		if($userinfo['password']!=secret($pass)){
 			$this->error('密码错误!');
+			exit();
+		}
+		
+		if($userinfo['status']!=1){
+			$this->error('请先通过邮件激活!');
 			exit();
 		}
 		//记录用户登录ip和时间

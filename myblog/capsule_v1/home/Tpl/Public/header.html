@@ -67,7 +67,7 @@
 						<div class="user-block">
 							<span><a href="__APP__">首页</a></span>
 							<!-- <span><a href="__URL__/articlelist/uid/<{$userinfo.id}>/cid/<{$v.id}>.html">博文目录</a></span> -->
-							<span><a href="__URL__/person/uid/<{$userinfo.id}>.html">关注</a></span>
+							<!-- <span><a href="__URL__/person/uid/<{$userinfo.id}>.html">关注</a></span> -->
 							<span><a href="__URL__/person/uid/<{$userinfo.id}>.html">关于我</a></span>
 						</div>
 					</div>
@@ -95,12 +95,12 @@
 							<div class="left-per-name">
 								<span><{$userinfo.kidname}></span>
 							</div>
-							<div class="left-per-focus">
+							<!-- <div class="left-per-focus">
 								<{if $smarty.session.uid}>
 								<div class="btn-style per-btn1">关注</div>
 								<div class="btn-style per-btn2">留言</div>
 								<{/if}>
-							</div>
+							</div> -->
 							<div class="left-per-info">
 								<ul>
 									<li class="info-style">
@@ -114,6 +114,14 @@
 									<li class="info-style">
 										<span>星座：</span>
 										<span style="position:relative"><{$userinfo.birth|getStar}></span>
+									</li>
+									<li class="info-style">
+										<span>城市：</span>
+										<span><{$userinfo.live_province}></span>
+									</li>
+									<li class="info-style">
+										<span>婚恋：</span>
+										<span><{$userinfo.merry}></span>
 									</li>
 									<li class="info-style">
 										<span>职业：</span>
@@ -159,7 +167,7 @@
 							</div>
 							<div class="bottom-height"></div>
 						</div>
-						<{if $userinfo.id==$smarty.session.uid}>
+						<!-- <{if $userinfo.id==$smarty.session.uid}>
 						<div class="left-list">
 							<div class="left-per-title">
 								<span class="per-title">我的好友</span>
@@ -186,6 +194,6 @@
 							</div>
 							<div class="bottom-height"></div>
 						</div>
-						<{/if}>
+						<{/if}> -->
 						
 					</div>

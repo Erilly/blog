@@ -3,6 +3,20 @@
 *文章页
 */
 class ArticleAction extends CommonAction {
+	#个人博客首页
+	public function person(){
+		$map['cuid']=$_REQUEST['uid'];
+		$map['status']=1;
+		//获取最热10条记录
+		$hotlist=M('Article')->where($map)->order('readnum desc')->limit(5)->select();
+		// echo M()->getlastsql();die;
+		//获取最新10条记录
+		$newlist=M('Article')->where($map)->order('ctime desc')->limit(5)->select();
+
+		$this->assign('hotlist',$hotlist);
+		$this->assign('newlist',$newlist);
+		$this->display();
+	}
 	#创建文章
 	public function docreate(){
 		$_POST['ctime']=time();

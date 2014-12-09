@@ -123,7 +123,7 @@ function getIcon($name,$x,$y){
 			height:20px;
 			background:url('__PUBLIC__/images/start.png') no-repeat {$x}px {$y}px;
 			position:absolute;
-			top:-5px;
+			top:-1px;
 			left:50px;
 		\">";
 	return $str;

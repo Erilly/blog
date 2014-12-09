@@ -3,12 +3,27 @@
 		<script language="javascript" src="__PUBLIC__/formValidator/DateTimeMask.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
+				//时间选择
 				$("#csny").focus(function(){ WdatePicker({ skin:'whyGreen',oncleared:function(){$(this).blur();},onpicked:function(){ $(this).blur();}});});
 				//城市选择
 				showprovince('live_province', 'live_city', "<{$info.live_province}>");
                 showcity('live_city', "<{$info.live_city}>", 'live_province');
 				showprovince('ht_province', 'ht_city', "<{$info.ht_province}>");
                 showcity('ht_city', "<{$info.ht_city}>", 'ht_province');
+                //ajax提交修改
+                $("#setinfo-form").submit(function(){
+                	var upto="__APP__/public/updateinfo";
+                	var updata=$(this).serialize();
+                	doAjax(upto,updata,function(data){
+						if(data.status!=1){
+							$("#error-message").html(data.info).fadeIn("fast").delay("800").fadeOut("slow");
+						}else{
+							$("#error-message").css({"color":"#56007c"}).html(data.info).fadeIn("fast").delay("800").fadeOut("slow");
+							location.reload();
+						}
+					});
+					return false;
+				});	
 			});
 	</script>
 		<div class="right">
@@ -18,7 +33,7 @@
 			<div class="right-content-box">
 				<div class="right-content">
 					<div class="register-box">
-						<form action="__APP__/public/updateinfo" method="post">
+						<form id="setinfo-form">
 							<ul>
 								<input type="hidden" name="uid" value="<{$smarty.request.uid}>"/>
 								<li>

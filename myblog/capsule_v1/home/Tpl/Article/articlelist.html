@@ -37,8 +37,10 @@
 				</div>
 			</div>
 		</div>
+		
 		<script type="text/javascript">
 			$(function(){
+				//开关文章显示
 				$(".turn-common").unbind().bind("click",function(){
 					var obj=$(this);
 					doAjax("__APP__/ajax/turnLock",{"aid":obj.attr("turnid")},
@@ -51,15 +53,18 @@
 							}
 						);		
 				});
+				//删除文章
 				$(".turn-common2").unbind().bind("click",function(){
 					var obj=$(this);
-					doAjax("__APP__/ajax/delIt",{"aid":obj.attr("turnid")},
+					if(confirm("确定要删除吗？删除后数据不可恢复！")){
+						doAjax("__APP__/ajax/delIt",{"aid":obj.attr("turnid")},
 							function(data){
 								if(data['status']){
 									location.reload();
 								}
 							}
 						);
+					}					
 				});	
 				
 			});
