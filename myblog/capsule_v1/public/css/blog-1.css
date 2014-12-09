@@ -263,16 +263,7 @@ p{line-height: 20pt}
 .pagebox *{font-size: 15px}
 /*blog首页*/
 .index-title-box *{color:#fff;}
-.index-title-box{
-    position: absolute;
-    top:50px;
-    left:200px;
-    width:450px;
-    overflow:hidden ;
-    text-indent: 2em;
-
-}
-.index-say-content{font-size: 20px}
+.index-title-box{position: absolute;top:50px;left:200px;width:450px;overflow:hidden ;}
 .index-logo{
     width:150px;
     height:150px;
