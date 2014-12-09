@@ -23,7 +23,7 @@ p{line-height: 20pt}
 /*导航条*/
 .head-top{height:30px;width:100%;background-color: #f1f1f1;position: fixed;z-index:1000;top:0;}
 .top-content{width:950px;margin:0 auto;font-size: 15px;}
-.top-content .logo{float:left;width:100px;height:30px;background:url("../images/logo.gif") no-repeat;}
+.top-content .logo{float:left;width:100px;height:30px;background:url("../images/100x30.png") no-repeat;margin-right:5px}
 .top-content .perinfo{width:200px;float:right;}
 .top-content .perinfo li{float:left;line-height: 30px;position:relative;text-align: center;padding:0 5px;}
 .top-content .perinfo li ul{position:absolute;background-color:#ddd;left:0; top:30px;display:none;}
@@ -263,7 +263,12 @@ p{line-height: 20pt}
 .pagebox *{font-size: 15px}
 /*blog首页*/
 .index-title-box *{color:#fff;}
-.index-title-box{position: absolute;top:50px;left:200px;width:450px;overflow:hidden ;}
+.index-title-box{position: absolute;top:100px;left:200px;width:520px;}
+.index-say-content{
+    text-indent:2em;
+    display:block;
+    font-size: 20px;
+}
 .index-logo{
     width:150px;
     height:150px;
@@ -300,9 +305,7 @@ p{line-height: 20pt}
     border-radius: 43px;
 }
 .index-article-list{
-    width:400px;
-    /*padding-left: 40px;*/
-    /*position: relative;*/
+    width:445px;
     vertical-align: top;
     border-bottom:2px solid #ddd;
     float: left;
@@ -351,6 +354,7 @@ p{line-height: 20pt}
 .index-article-time span{
     margin-left:10px;
 }
+
 /*登陆框和覆盖层*/
 .overburden{display:none;background-color: black; left: 0px; top: 0px; z-index: 100; position: fixed; width:100%; height: 100%; opacity: 0.4;}
 .login-window{
@@ -398,7 +402,7 @@ p{line-height: 20pt}
     height:50px;
     line-height: 50px;
     background-color:#efefef;
-    box-shadow:#56007c 0px 0px 4px; 
+    box-shadow:#000 0px 0px 4px; 
     opacity: 0.85;
     margin:auto;
     z-index:10000;
