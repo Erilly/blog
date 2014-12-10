@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title><{$smarty.const.SITE_TITLE}></title>
+		<meta name="keywords" content="<{$smarty.const.SITE_KEYWORD}>"/>
+		<meta name="description" content="<{$smarty.const.SITE_DESCRIPTION}>"/>
+		<link rel="apple-touch-icon-precomposed" href="__PUBLIC__/images/fish.ico">
+		<link rel="shortcut icon" href="__PUBLIC__/images/16.ico" mce_href="__PUBLIC__/images/16.ico" type="image/x-icon">
+		<link rel="bookmark" href="__PUBLIC__/images/16.ico" mce_href="__PUBLIC__/images/16.ico" type="image/x-icon">
+		<link type="text/css" rel="stylesheet" href="__PUBLIC__/formValidator/style/validator.css"></link>
+		<link href="__PUBLIC__/css/register.css" rel="stylesheet" type="text/css" />
+		<script src="__PUBLIC__/js/jquery-1.8.0.min.js" type="text/javascript"></script>
+  		<script src="__PUBLIC__/js/city.js" type="text/javascript"></script>
+		<script src="__PUBLIC__/formValidator/jquery_last.js" type="text/javascript"></script>
+		<script src="__PUBLIC__/formValidator/formValidator.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="__PUBLIC__/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+		<script language="javascript" src="__PUBLIC__/formValidator/DateTimeMask.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+
+			   	//表单验证
+				$.formValidator.initConfig({ formid:"form1",onerror:function(msg){ return false;}});
+				$("#reg-email").formValidator({ onshow:"请输入邮箱",onfocus:"邮箱至少6个字符",oncorrect:"该Email已注册，可找回密码"}).inputValidator({ min:6,max:50,onerror:"你输入的Email地址非法,请确认"}).regexValidator({ regexp:"email",datatype:"enum",onerror:"Email格式不正确"})
+				    .ajaxValidator({
+				    type : "get",
+					url : "__APP__/public/checkemail",
+					datatype : "json",
+					success : function(data){	
+			            if( data.status == "1" )
+						{
+							return false;
+						}
+			            else
+						{
+			                return true;
+			                
+						}
+					},
+					error: function(){ alert("服务器没有返回数据，可能服务器忙，请重试");},
+					onerror : "该Email未注册,不能找回密码",
+					onwait : "正在对Email进行合法性校验，请稍候..."
+				});
+				
+				$("#reg-verify").formValidator({ onshow:"请输入验证码",onfocus:"5位字母验证码"}).inputValidator({ min:5,max:5,onerror:"验证码只能是字母",empty:{ leftempty:false,rightempty:false,emptyerror:"不能有空格"},onerror:"验证码只能是5位字母,请确认"});
+
+				//更换验证码
+				$(".vimg").click(function(){
+					var d = new Date();
+					$(this).attr('src', "__APP__/public/verify/"+d.getTime());
+				});
+				
+			});
+	</script>
+	</head>
+	<body>
+		<{include file="Public/headbar.html"}>
+		<div id="back"></div>
+		<div class="bg">
+			<div class="box">
+				<div class="register-box">
+					<form action="__APP__/public/dogetpass" method="post" id="form1" name="form1">
+						<ul>
+							<li>
+								<label><i>*</i>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</label>
+								<div class="re-input"><input type="text" name="mail" class="re-input-bor" id="reg-email"/></div>
+								<span id="reg-emailTip"></span>
+							</li>
+							<li>
+								<label><i>*</i>验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
+								<div class="re-input re-verify"><input type="text" name="verify" class="re-input-bor re-verify-input" id="reg-verify"/><img src="__APP__/Public/verify/" class="re-vertify-img vimg"/></div>
+								<span id="reg-verifyTip"></span>
+							</li>
+							<li>
+								<div class="re-submit"><input type="submit" value="找回密码" class="re-sub-btn"/></div>
+							</li>
+						</ul>
+					</form>
+				</div>
+				<script defer="defer" src="__PUBLIC__/formValidator/datepicker/WdatePicker.js" type="text/javascript"></script>
+		<!-- 导入页脚部分 -->
+		<{include file="Public/footer.html"}>

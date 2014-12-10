@@ -123,6 +123,13 @@ class ArticleAction extends CommonAction {
             exit();
         }
     }
-
+    #密码重置页面
+    public function reset(){
+    	if(session('uid')){
+    		$this->display();
+    	}else{
+    		header($_SERVER['HTTP_REFERER']);
+    	}
+    }
 
 }

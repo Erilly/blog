@@ -1,0 +1,80 @@
+<{include file="Public/header.html"}>
+  		<link type="text/css" rel="stylesheet" href="__PUBLIC__/formValidator/style/validator.css"></link>
+		<script src="__PUBLIC__/formValidator/jquery_last.js" type="text/javascript"></script>
+		<script src="__PUBLIC__/formValidator/formValidator.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="__PUBLIC__/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+		<script language="javascript" src="__PUBLIC__/formValidator/DateTimeMask.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+			   	//表单验证
+				$.formValidator.initConfig({ formid:"form2",onerror:function(msg){ return false;}});
+				
+				$("#oldpass").formValidator({ onshow:"请输入原始密码",oncorrect:"输入正确！"}).inputValidator({ min:1,max:20})
+				    .ajaxValidator({
+				    type : "get",
+					url : "__APP__/ajax/checkpass",
+					datatype : "json",
+					success : function(data){	
+			            if( data.status == "1" )
+						{
+			                return true;
+						}
+			            else
+						{
+			                return false;
+						}
+					},
+					error: function(){ alert("服务器没有返回数据，可能服务器忙，请重试");},
+					onerror : "密码输入错误",
+					onwait : "正在对密码进行校验，请稍候..."
+				});
+				$("#reset").formValidator({ onshow:"请输入密码",onfocus:"6-12位数字字母下划线",oncorrect:"密码合法"}).inputValidator({ min:6,max:12,empty:{ leftempty:false,rightempty:false,emptyerror:"密码两边不能有空符号"},onerror:"密码为6-12位,请确认"});
+				$("#re-reset").formValidator({ onshow:"请输入重复密码",onfocus:"两次密码必须一致哦",oncorrect:"密码一致"}).inputValidator({ min:1,empty:{ leftempty:false,rightempty:false,emptyerror:"重复密码两边不能有空符号"},onerror:"重复密码不能为空,请确认"}).compareValidator({ desid:"reset",operateor:"=",onerror:"2次密码不一致,请确认"});
+			});
+	</script>
+
+	 </script>
+		<div class="right">
+			<div class="left-per-title">
+				<span class="per-title">修改个人资料</span>
+			</div>
+			<div class="right-content-box">
+				<div class="right-content">
+					<div class="register-box">
+						<form  action="__APP__/public/reset" method="post" id="form2">
+							<ul>
+								<input type="hidden" name="uid" value="<{$smarty.request.uid}>"/>
+								<li>
+									<label class="setinfo-tag"><i>*</i>原&nbsp;&nbsp;密&nbsp;&nbsp;码：</label>
+									<div class="re-input"><input type="password" name="oldpass" class="re-input-bor" id="oldpass"/></div>
+									<span id="oldpassTip"></span>
+								</li>
+								<li>
+									<label class="setinfo-tag"><i></i>新&nbsp;&nbsp;密&nbsp;&nbsp;码：</label>
+									<div class="re-input"><input type="password" name="reset" class="re-input-bor" id="reset"/></div>
+									<span id="resetTip"></span>
+								</li>
+								<li>
+									<label class="setinfo-tag"><i></i>再次输入：</label>
+									<div class="re-input"><input type="password" name="re-reset" class="re-input-bor" id="re-reset"/></div>
+									<span id="re-resetTip"></span>
+								</li>
+								<li>
+									<label class="setinfo-tag"><i></i>验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
+									<div class="re-input re-verify"><input type="text" name="verify" class="re-input-bor re-verify-input" id="reg-verify"/><img src="__APP__/Public/verify/" class="re-vertify-img vimg"/></div>
+									<span id="reg-verifyTip"></span>
+								</li>
+								<li>
+									<div class="re-submit"><input type="submit" value="修 改" class="re-sub-btn"/></div>
+								</li>
+							</ul>
+						</form>
+					</div>
+				<div class="bottom-height"></div>
+			</div>
+		</div>
+	</div>
+	<script defer="defer" src="__PUBLIC__/formValidator/datepicker/WdatePicker.js" type="text/javascript"></script>
+
+<{include file="Public/footer.html"}>

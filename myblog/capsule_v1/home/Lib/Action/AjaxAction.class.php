@@ -80,4 +80,17 @@ class AjaxAction extends Action
 		 	exit();
 		}
 	}
+	#检验密码的正确性
+	public function checkpass(){
+		$map['id']=session('uid');
+		$pass=M('User')->where($map)->getField('password');
+		
+		if($pass!=secret($_REQUEST['oldpass'])){
+			$this->error('密码错误!');
+			exit();
+		}
+		$this->success();
+		exit();
+
+	}
 }
