@@ -93,4 +93,33 @@ class AjaxAction extends Action
 		exit();
 
 	}
+	#加载文章评论
+	public function loadMore(){
+		$map['aid']=$_POST['aid'];
+		$limit=3;
+		$start=$_POST['p'];
+		$list=M('Comment')->where($map)->limit($start,$limit)->order('ctime desc')->select();
+		//拼装返回的html string
+		$html="";
+		foreach ($list as $v) {
+			$html.="<li>";
+			$html.="<div class=\"comment-pic\">";
+			$html.="<a href=\"__URL__/person/uid/{$v['euid']}.html\">";
+			$html.="<img src=\"".getheadpic($v['euid'])."\" width=\"50\" height=\"50\" class=\"comment-imag\"/>";
+			$html.="</a>";
+			$html.="<a href=\"__URL__/person/uid/{$v['euid']}.html\" class=\"comment-uname\">".getName($v['euid'])."</a>";
+			$html.="</div>";
+			$html.="<div class=\"comment-content\">{$v['comment']}</div>";
+			$html.="<div class=\"clearres\"></div>";
+			$html.="<div class=\"discuss-ctime\">";
+			$html.="<span>".date('Y-m-d H:s',$v['ctime'])."</span>";
+			$html.="</div>";
+			$html.="</li>";
+		}
+		//拼装返回的状态
+		$count=count($list);//统计查询出的数据条数
+		$count==$limit?$status=1:$status=0;//状态
+		$count>0?$info=1:$info=0;//信息
+		$this->ajaxReturn($html,$info,$status);
+	}
 }

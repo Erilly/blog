@@ -25,7 +25,7 @@
 						<span class="article-discuss-right"><a href="#here">[发评论]</a></span>
 					</div>
 					<div class="discuss-content">
-						<ul>
+						<ul id="commentBox">
 							<{foreach from=$comment item="v"}>
 							<li>
 								<div class="comment-pic">
@@ -41,13 +41,20 @@
 								</div>
 							</li>
 							<{/foreach}>
+
 						</ul>
 					</div>
+					<div style="text-align:center;color:#774ea7">
+						<{if $loadStatus==1}>
+						<span id="load-more" style="cursor:pointer;">加载更多</span>
+						<{/if}>
+					</div>
 					<div class="right-article-bar">
-						<span class="article-discuss-left" id="here">发表评论</span>
+						<span class="article-discuss-left" id="here">发表评论</span>	
 					</div>
 					<script type="text/javascript">
 						$(function(){
+							//提交评论
 							$("#commentform").submit(function(){
 								var upto="__URL__/doComment";
 								var updata=$(this).serialize();
@@ -60,6 +67,22 @@
 									}
 								});
 								return false;
+							});
+
+							//加载评论
+							var p=3;
+							$("#load-more").bind('click',function(){
+								var upto="__APP__/ajax/loadMore";
+								var updata={"aid":<{$article.id}>,"p":p};
+								doAjax(upto,updata,function(msg){
+									if(msg.info==1){
+										$("#commentBox").append(msg.data);
+										p+=3;
+										if(msg.status==0){
+											$("#load-more").hide();
+										}
+									}
+								})
 							});
 						})
 							

@@ -100,8 +100,12 @@ class ArticleAction extends CommonAction {
     	}
     	//查询统计评论数据
         $count=M('Comment')->where($map)->count();
-        $res=M('Comment')->where($map)->select();
-        
+        $res=M('Comment')->where($map)->limit(3)->order('ctime desc')->select();
+        //设置一个状态用来判断是否需要加载评论
+        $countres=count($res);
+        $count>$countres?$loadStatus=1:$loadStatus=0;
+
+       	$this->assign('loadStatus',$loadStatus);
         $this->assign('commentCount',$count);
         $this->assign('comment',$res);
         $this->display();
