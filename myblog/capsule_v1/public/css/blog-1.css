@@ -179,9 +179,13 @@ p{line-height: 20pt}
 .right-discuss-box ul li{line-height: 40px}
 .right-discuss-box ul li input{ 
     padding: 0 3px;
-    width: 100px;
-    height:20px;
 }
+.right-discuss-box .verfy-posit{
+    position: relative;
+    width:310px;
+    top:10px;
+}
+
 .discuss-area{width:100%;height:130px;overflow-y:scroll;resize: none;margin:0 auto;}
 .discuss-sub{width:70px;margin:5px auto 0 80%;}
 .discuss-sub .sub-it{width:70px;height:25px;}
@@ -392,26 +396,24 @@ p{line-height: 20pt}
 .global_close{font-size: 20px;width:16px;height:16px;text-align: center;line-height: 16px;cursor: pointer;background: url("../images/quxiao.png");}
 .global_log_btn{cursor: pointer;}
 #error-message{
-    font-size: 17px;
+    font-size: 20px;
+    line-height: 90px;
     color:red;
     display:none;
     text-align: center;
     border-radius:4px;
+    border:1px solid #ccc;
     position:fixed;
-    width:200px;
-    height:50px;
-    line-height: 50px;
-    background-color:#efefef;
-    box-shadow:#000 0px 0px 4px; 
-    opacity: 0.85;
+    width:260px;
+    height:90px;
+    background-color:#fff;
+    box-shadow:#999 0px 0px 10px; 
     margin:auto;
     z-index:10000;
     left:0; 
     right:0; 
     top:0;
     bottom:0;
-
-
 }
 /*页尾*/
 .foot *{font-size: 13px;color:#fff;}

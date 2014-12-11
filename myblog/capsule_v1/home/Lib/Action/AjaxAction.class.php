@@ -18,7 +18,6 @@ class AjaxAction extends Action
 	}
 	#上传用户头像
 	public function upfile(){
-		// echo "__PUBLIC__";die;
 		$uid=session('uid');
 		$path = SITE_PATH."/uploads/headpic/";
 		$filename = $uid.'_'.date('Ymd',time()).".jpg";  
@@ -97,7 +96,7 @@ class AjaxAction extends Action
 	public function loadMore(){
 		$map['aid']=$_POST['aid'];
 		$limit=3;
-		$start=$_POST['p'];
+		$start=$_POST['p']+$limit;
 		$list=M('Comment')->where($map)->limit($start,$limit)->order('ctime desc')->select();
 		//拼装返回的html string
 		$html="";
@@ -122,4 +121,43 @@ class AjaxAction extends Action
 		$count>0?$info=1:$info=0;//信息
 		$this->ajaxReturn($html,$info,$status);
 	}
+	 #增加评论
+    public function doComment(){
+    	//判断内容和验证码是否正确
+        if(!$_POST['content']){ $this->error('评论不能为空！');exit;}
+        if(session('verify')!=md5($_POST['verify'])){
+			$this->error('验证码错误！');
+			exit();
+		}
+		//拼装插入评论
+		unset($_POST['verfy']);
+        $_POST['comment']=$_POST['content'];
+        $_POST['euid']=session('uid');
+        $_POST['ctime']=time();
+
+        $id=M('Comment')->data($_POST)->add();
+        //拼装返回评论数据
+        $html="";
+        if($id){
+        	$html.="<li>";
+			$html.="<div class=\"comment-pic\">";
+			$html.="<a href=\"__URL__/person/uid/{$_POST['euid']}.html\">";
+			$html.="<img src=\"".getheadpic($_POST['euid'])."\" width=\"50\" height=\"50\" class=\"comment-imag\"/>";
+			$html.="</a>";
+			$html.="<a href=\"__URL__/person/uid/{$_POST['euid']}.html\" class=\"comment-uname\">".getName($_POST['euid'])."</a>";
+			$html.="</div>";
+			$html.="<div class=\"comment-content\">{$_POST['comment']}</div>";
+			$html.="<div class=\"clearres\"></div>";
+			$html.="<div class=\"discuss-ctime\">";
+			$html.="<span>".date('Y-m-d H:s',$_POST['ctime'])."</span>";
+			$html.="</div>";
+			$html.="</li>";
+
+			$this->ajaxReturn($html,'评论成功！',1);
+            exit();
+        }else{
+            $this->error('评论超时！');
+            exit();
+        }
+    }
 }

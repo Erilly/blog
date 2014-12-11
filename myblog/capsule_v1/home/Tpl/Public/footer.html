@@ -48,9 +48,9 @@
 							var updata=$(this).serialize();
 							doAjax(upto,updata,function(data){
 								if(data.status!=1){
-									$("#error-message").html(data.info).fadeIn("fast").delay("800").fadeOut("slow");
+									$("#error-message").html(data.info).fadeIn("slow").fadeOut("slow");
 								}else{
-									$("#error-message").css({"color":"#56007c"}).html(data.info).fadeIn("fast").delay("800").fadeOut("slow");
+									$("#error-message").css({"color":"#56007c"}).html(data.info).fadeIn("slow").fadeOut("slow");
 									location.reload();
 								}
 							});

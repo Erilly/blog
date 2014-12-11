@@ -19,6 +19,8 @@ class ArticleAction extends CommonAction {
 	}
 	#创建文章
 	public function docreate(){
+		if(!$_POST['title']){ $this->error('标题不能为空');exit();}
+		if(!$_POST['content']){ $this->error('内容不能为空');exit();}
 		$_POST['ctime']=time();
 		$_POST['cuid']=session('uid');
 
@@ -84,7 +86,7 @@ class ArticleAction extends CommonAction {
 		$this->assign('info',$res);
 		$this->display();
 	}
-    #在content页面增加评论信息
+    #在content页面显示评论信息
     public function content(){
     	$read['aid']=$map['aid']=$_REQUEST['aid'];
     	$read['ip']=$_SERVER['REMOTE_ADDR'];
@@ -111,22 +113,6 @@ class ArticleAction extends CommonAction {
         $this->display();
     }
 
-    #增加评论
-    public function doComment(){
-        if(!$_POST['content']){ $this->error('评论不能为空！');exit;}
-        $_POST['comment']=$_POST['content'];
-        $_POST['euid']=session('uid');
-        $_POST['ctime']=time();
-
-        $id=M('Comment')->data($_POST)->add();
-        if($id){
-            $this->success('评论成功！');
-            exit();
-        }else{
-            $this->error('评论超时！');
-            exit();
-        }
-    }
     #密码重置页面
     public function reset(){
     	if(session('uid')){

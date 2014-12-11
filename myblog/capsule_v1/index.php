@@ -13,5 +13,5 @@ define('APP_NAME','home');
 define('APP_PATH',BLOG_SITE_PATH.'home/');
 
 #加载ThinkPHP框架并实例化应用
-require_once(THINK_URL.'/ThinkPHP.php');
+require_once(THINK_URL.'/Extend/Engine/Sae.php');
 

@@ -30,7 +30,7 @@ class IndexAction extends CommonAction {
                 $res[$k]['cuid']=$v['id'];   
             }
         }
-        echo 
+
     	$this->assign('page',$p->show());
         $this->assign('res',$res);
 		$this->display();

@@ -1,9 +1,4 @@
 <{include file="Public/header.html"}>
-		<script src="__PUBLIC__/ueditor1_4_3/ueditor.parse.js"></script>
-		 <!-- 配置文件 -->
-	    <script type="text/javascript" src="__PUBLIC__/ueditor1_4_3/ueditor.config.js"></script>
-	    <!-- 编辑器源码文件 -->
-	    <script type="text/javascript" src="__PUBLIC__/ueditor1_4_3/ueditor.all.min.js"></script>
 		<div class="right">
 			<div class="left-per-title">
 				<span class="per-title"><a href="__URL__/articlelist/uid/<{$userinfo.id}>/cid/<{$article.cid}>.html"><{$article.cid|getClassName}></a> > <{$article.title}></span>
@@ -56,21 +51,28 @@
 						$(function(){
 							//提交评论
 							$("#commentform").submit(function(){
-								var upto="__URL__/doComment";
+								var upto="__APP__/ajax/doComment";
 								var updata=$(this).serialize();
-								doAjax(upto,updata,function(data){
-									if(data.status!=1){
-										$("#error-message").html(data.info).fadeIn("fast").delay("800").fadeOut("slow");
+								doAjax(upto,updata,function(msg){
+									if(msg.status!=1){
+										$("#error-message").html(msg.info).fadeIn("fast").delay("800").fadeOut("slow");
 									}else{
-										$("#error-message").css({"color":"#56007c"}).html(data.info).fadeIn("fast").delay("800").fadeOut("slow");
-										location.reload();
+										$("#commentBox").prepend(msg.data);
+										$("#error-message").css({"color":"#56007c"}).html(msg.info).fadeIn("fast").delay("800").fadeOut("slow");
+										//更换验证码
+										var d = new Date();
+										$(".vimg").attr('src', "__APP__/public/verify/"+d.getTime());
+										//清空编辑器内容
+										clrearIt();
+										$("#reg-verify").val(" ");
+										
 									}
 								});
 								return false;
 							});
 
 							//加载评论
-							var p=3;
+							var p=0;
 							$("#load-more").bind('click',function(){
 								var upto="__APP__/ajax/loadMore";
 								var updata={"aid":<{$article.id}>,"p":p};
@@ -78,9 +80,9 @@
 									if(msg.info==1){
 										$("#commentBox").append(msg.data);
 										p+=3;
-										if(msg.status==0){
-											$("#load-more").hide();
-										}
+									}
+									if(msg.status==0){
+										$("#load-more").hide();
 									}
 								})
 							});
@@ -93,6 +95,11 @@
 								<{if $smarty.session.uid}>
 								<input type="hidden" name="aid" value="<{$article.id}>" />
 								<li>
+									<script src="__PUBLIC__/ueditor1_4_3/ueditor.parse.js"></script>
+									 <!-- 配置文件 -->
+								    <script type="text/javascript" src="__PUBLIC__/ueditor1_4_3/ueditor.config.js"></script>
+								    <!-- 编辑器源码文件 -->
+								    <script type="text/javascript" src="__PUBLIC__/ueditor1_4_3/ueditor.all.min.js"></script>
 									<!-- 加载编辑器的容器 -->
 							        <script id="container" name="content" type="text/plain" style="height:300px;"></script>
 							        <!-- 实例化编辑器 -->
@@ -112,9 +119,20 @@
 												        'help', //帮助
 													    ]]
 								        });
-										
+										function clrearIt(){
+											ue.execCommand('cleardoc');
+										}
 								    </script>
 							    </li>
+							    <li class="verfy-posit">
+									<label class="setinfo-tag"><i></i>验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
+									<div class="re-input re-verify">
+										<input type="text" name="verify" class="re-input-bor re-verify-input" id="reg-verify"/>
+										<img src="__APP__/Public/verify/" class="re-vertify-img vimg"/>
+									</div>
+									<span id="reg-verifyTip"></span>
+								</li>
+							    <li>
 									<div class="discuss-sub"><button class="button">评 论</button></div>
 								</li>
 								<{else}>
@@ -122,8 +140,6 @@
 								<{/if}>
 							</ul>
 						</form>
-
-					    
 					</div>
 				</div>
 				<div class="bottom-height"></div>
