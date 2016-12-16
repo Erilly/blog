@@ -13,8 +13,8 @@ define('SITE_URL','');
 #邮件发送配置
 define('MAIL_SMTP',     'smtp.yeah.net');
 define('MAIL_PORT',     '25');
-define('MAIL_USERNAME', 'spacefish@yeah.net');
-define('MAIL_PASSWORD', 'xytsyj621');
+define('MAIL_USERNAME', '');
+define('MAIL_PASSWORD', '');
 
 #SEO相关配置
 define('SITE_NAME', '太空鱼');
